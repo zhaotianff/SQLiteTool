@@ -4,6 +4,17 @@
              xmlns:local="clr-namespace:SQLiteTool"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--区域化-->
+                <!--默认简体中文-->
+                <ResourceDictionary Source="Resources/Localization/zh-CN.xaml"/>
+               
+                <ResourceDictionary Source="Style/WindowStyle.xaml"/>
+                <ResourceDictionary Source="Style/ImageButton.xaml"/>
+                
+               
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

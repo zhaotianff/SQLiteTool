@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SQLiteTool"
         mc:Ignorable="d"
-        Title="SQLiteTool" Height="350" Width="525">
-    <Grid>
+        Title="SQLiteTool" Height="720" Width="1280" WindowStartupLocation="CenterScreen" Style="{StaticResource newStyle}">
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="28"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
         
+        <!--菜单-->
+        <Menu>
+            <MenuItem Header="{DynamicResource Menu.File}">
+                <MenuItem Header="{DynamicResource Menu.File.Create}"/>
+                <MenuItem Header="{DynamicResource Menu.File.Attatch}"/>
+                <MenuItem Header="{DynamicResource Menu.File.Exit}"/>
+            </MenuItem>
+            <MenuItem Header="{DynamicResource Menu.Edit}"/>
+            <MenuItem Header="{DynamicResource Menu.View}"/>
+            <MenuItem Header="{DynamicResource Menu.Tools}"/>
+            <MenuItem Header="{DynamicResource Menu.Window}"/>
+            <MenuItem Header="{DynamicResource Menu.Help}"/>
+        </Menu>
+        
+        <!--工具栏-->
+        
+        <!--功能区域-->
+        
+        <!--状态栏-->
     </Grid>
 </Window>
