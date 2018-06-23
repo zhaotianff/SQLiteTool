@@ -12,8 +12,9 @@
                
                 <ResourceDictionary Source="Style/WindowStyle.xaml"/>
                 <ResourceDictionary Source="Style/ImageButton.xaml"/>
-                
-               
+                <ResourceDictionary Source="Style/RichTextBoxStyle.xaml"/>
+
+
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

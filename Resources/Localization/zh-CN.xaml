@@ -8,21 +8,6 @@
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <!--菜单-->
     <s:String x:Key="Menu.File">文件</s:String>
     <s:String x:Key="Menu.Edit">编辑</s:String>
@@ -34,4 +19,19 @@
     <s:String x:Key="Menu.File.Attatch">附加数据库</s:String>
     <s:String x:Key="Menu.File.Create">创建数据库</s:String>
     <s:String x:Key="Menu.File.Exit">退出</s:String>
+    
+    <!--编辑-->
+    
+    <!--视图-->
+    
+    <!--工具-->
+    
+    <!--窗口-->
+    
+    <!--帮助-->
+    
+    
+    <!--功能-->
+    <s:String x:Key="Func.TreeView.LocalDB">本地数据库</s:String>
+    <s:String x:Key="Func.TreeView.NetworkDB">网络数据库</s:String>
 </ResourceDictionary>

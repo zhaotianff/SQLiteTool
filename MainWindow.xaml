@@ -29,9 +29,24 @@
         </Menu>
         
         <!--工具栏-->
+        <WrapPanel Grid.Row="1"></WrapPanel>
         
         <!--功能区域-->
-        
+        <Grid Grid.Row="2" ShowGridLines="False">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="280"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TreeView Grid.Column="0">
+                <TreeViewItem Header="{DynamicResource Func.TreeView.LocalDB}">
+                    <TreeViewItem Header="测试数据库"/>
+                </TreeViewItem>
+            </TreeView>
+            <GridSplitter Grid.Column="1"  Width="1"  HorizontalAlignment="Center" Background="LightSkyBlue" BorderBrush="Transparent" />
+            <RichTextBox Grid.Column="2" Style="{StaticResource RichTextBoxStyle}"></RichTextBox>
+        </Grid>
         <!--状态栏-->
+        <Canvas Grid.Row="3"></Canvas>
     </Grid>
 </Window>
