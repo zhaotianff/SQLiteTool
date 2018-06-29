@@ -16,19 +16,29 @@
     <s:String x:Key="Menu.Window">窗口</s:String>
     <s:String x:Key="Menu.Help">帮助</s:String>
 
+    <!--文件-->
     <s:String x:Key="Menu.File.Attatch">附加数据库</s:String>
     <s:String x:Key="Menu.File.Create">创建数据库</s:String>
+    <s:String x:Key="Menu.File.Save">保存</s:String>
+    <s:String x:Key="Menu.File.SaveAll">保存全部</s:String>
     <s:String x:Key="Menu.File.Exit">退出</s:String>
     
     <!--编辑-->
+    <s:String x:Key="Menu.Edit.Copy">复制</s:String>
+    <s:String x:Key="Menu.Edit.Paste">粘贴</s:String>
+    <s:String x:Key="Menu.Edit.Delete">删除</s:String>
     
     <!--视图-->
+    <s:String x:Key="Menu.View.ObjectExplorer">对象浏览器</s:String>
+    <s:String x:Key="Menu.View.FullScreen">全屏</s:String>
     
     <!--工具-->
+    <s:String x:Key="Menu.Tools.Options">选项</s:String>
     
     <!--窗口-->
     
     <!--帮助-->
+    <s:String x:Key="Menu.Help.About">关于</s:String>
     
     
     <!--功能-->

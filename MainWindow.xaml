@@ -19,13 +19,26 @@
             <MenuItem Header="{DynamicResource Menu.File}">
                 <MenuItem Header="{DynamicResource Menu.File.Create}"/>
                 <MenuItem Header="{DynamicResource Menu.File.Attatch}"/>
+                <MenuItem Header="{DynamicResource Menu.File.Save}"/>
+                <MenuItem Header="{DynamicResource Menu.File.SaveAll}"/>
                 <MenuItem Header="{DynamicResource Menu.File.Exit}"/>
             </MenuItem>
-            <MenuItem Header="{DynamicResource Menu.Edit}"/>
-            <MenuItem Header="{DynamicResource Menu.View}"/>
-            <MenuItem Header="{DynamicResource Menu.Tools}"/>
+            <MenuItem Header="{DynamicResource Menu.Edit}">
+                <MenuItem Header="{DynamicResource Menu.Edit.Copy}"/>
+                <MenuItem Header="{DynamicResource Menu.Edit.Paste}"/>
+                <MenuItem Header="{DynamicResource Menu.Edit.Delete}"/>
+            </MenuItem>
+            <MenuItem Header="{DynamicResource Menu.View}">
+                <MenuItem Header="{DynamicResource Menu.View.ObjectExplorer}"/>
+                <MenuItem Header="{DynamicResource Menu.View.FullScreen}"/>
+            </MenuItem>
+            <MenuItem Header="{DynamicResource Menu.Tools}">
+                <MenuItem Header="{DynamicResource Menu.Tools.Options}"/>
+            </MenuItem>
             <MenuItem Header="{DynamicResource Menu.Window}"/>
-            <MenuItem Header="{DynamicResource Menu.Help}"/>
+            <MenuItem Header="{DynamicResource Menu.Help}">
+                <MenuItem Header="{DynamicResource Menu.Help.About}"/>
+            </MenuItem>
         </Menu>
         
         <!--工具栏-->
@@ -42,11 +55,29 @@
                 <TreeViewItem Header="{DynamicResource Func.TreeView.LocalDB}">
                     <TreeViewItem Header="测试数据库"/>
                 </TreeViewItem>
+                <TreeViewItem Header="{DynamicResource Func.TreeView.NetworkDB}">
+                    <TreeViewItem Header="测试数据库"/>
+                </TreeViewItem>
             </TreeView>
             <GridSplitter Grid.Column="1"  Width="1"  HorizontalAlignment="Center" Background="LightSkyBlue" BorderBrush="Transparent" />
-            <RichTextBox Grid.Column="2" Style="{StaticResource RichTextBoxStyle}"></RichTextBox>
+            <Grid Grid.Column="2" ShowGridLines="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="220"/>
+                </Grid.RowDefinitions>
+                <RichTextBox Grid.Row="0"></RichTextBox>
+                <GridSplitter Grid.Row="1" Height="2" ResizeDirection="Rows" Background="LightSkyBlue" BorderBrush="Transparent" HorizontalAlignment="Stretch"/>
+                <ListView Grid.Row="2">
+                    <ListView.View>
+                        <GridView></GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
         </Grid>
         <!--状态栏-->
-        <Canvas Grid.Row="3"></Canvas>
+        <Canvas Grid.Row="3">
+            <TextBlock Text="{Binding StatusInfo}"></TextBlock>
+        </Canvas>
     </Grid>
 </Window>

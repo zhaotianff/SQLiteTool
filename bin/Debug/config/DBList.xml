@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DatabaseList>
+	<LocalDBList>
+		<Item>
+			<Path></Path>
+			<Alias></Alias>
+		</Item>
+	</LocalDBList>
+<NetworkDBList>
+		<Item>
+			<Path></Path>
+			<Alias></Alias>
+		</Item>
+</NetworkDBList>
+</DatabaseList>
