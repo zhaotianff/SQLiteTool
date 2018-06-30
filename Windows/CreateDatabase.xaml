@@ -1,0 +1,25 @@
+﻿<Window x:Class="SQLiteTool.Windows.CreateDatabase"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{DynamicResource Windows.CreateDatabase.Title}" Height="200" Width="500" SnapsToDevicePixels="True">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <WrapPanel Grid.Row="0" VerticalAlignment="Center">
+            <Label Content="{DynamicResource Windows.CreateDatabase.Title}"></Label>
+            <TextBox Width="420"></TextBox>
+        </WrapPanel>
+        <WrapPanel Grid.Row="1" VerticalAlignment="Center">
+            <Label Content="{DynamicResource Windows.CreateDatabase.Path}" Width="70" HorizontalContentAlignment="Center" ></Label>
+            <TextBox Width="390"></TextBox>
+            <Button Width="30" Content="{DynamicResource Windows.CreateDatabase.Browse}" VerticalContentAlignment="Top"></Button>
+        </WrapPanel>
+        <Grid Grid.Row="2">
+            <Button HorizontalAlignment="Right" Content="{DynamicResource Windows.CreateDatabase.OK}" Margin="0,0,65,0" Width="50"></Button>
+            <Button HorizontalAlignment="Right" Content="{DynamicResource Windows.CreateDatabase.Cancel}" Width="50" Margin="0,0,5,0"/>
+        </Grid>
+    </Grid>
+</Window>

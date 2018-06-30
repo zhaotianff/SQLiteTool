@@ -53,6 +53,12 @@
             </Grid.ColumnDefinitions>
             <TreeView Grid.Column="0">
                 <TreeViewItem Header="{DynamicResource Func.TreeView.LocalDB}">
+                    <TreeViewItem.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="{DynamicResource Func.Treeview.LocalDB.ContextMenu.Create}"></MenuItem>
+                            <MenuItem Header="{DynamicResource Func.Treeview.LocalDB.ContextMenu.Attatch}"></MenuItem>
+                        </ContextMenu>
+                    </TreeViewItem.ContextMenu>
                     <TreeViewItem Header="测试数据库"/>
                 </TreeViewItem>
                 <TreeViewItem Header="{DynamicResource Func.TreeView.NetworkDB}">
