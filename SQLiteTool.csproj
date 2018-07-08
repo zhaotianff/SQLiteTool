@@ -62,6 +62,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\AllCommands.cs" />
+    <Compile Include="Model\CreateDatabaseInfo.cs" />
     <Compile Include="Windows\CreateDatabase.xaml.cs">
       <DependentUpon>CreateDatabase.xaml</DependentUpon>
     </Compile>

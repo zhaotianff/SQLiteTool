@@ -9,7 +9,7 @@
         Title="SQLiteTool" Height="720" Width="1280" WindowStartupLocation="CenterScreen" Style="{StaticResource newStyle}">
     <Window.CommandBindings>
         <!--Function-->
-        <CommandBinding Command="c:AllCommands.CreateDataBase" CanExecute="CreateDatabase_CanExecute" Executed="CreateDatabase_Executed"/>
+        <CommandBinding Command="c:AllCommands.CreateDatabase" CanExecute="CreateDatabase_CanExecute" Executed="CreateDatabase_Executed"/>
     </Window.CommandBindings>
     <Grid ShowGridLines="True">
         <Grid.RowDefinitions>
@@ -22,7 +22,7 @@
         <!--菜单-->
         <Menu>
             <MenuItem Header="{DynamicResource Menu.File}">
-                <MenuItem Header="{DynamicResource Menu.File.Create}"/>
+                <MenuItem Header="{DynamicResource Menu.File.Create}" Command="c:AllCommands.CreateDatabase"/>
                 <MenuItem Header="{DynamicResource Menu.File.Attatch}"/>
                 <MenuItem Header="{DynamicResource Menu.File.Save}"/>
                 <MenuItem Header="{DynamicResource Menu.File.SaveAll}"/>
@@ -60,7 +60,7 @@
                 <TreeViewItem Header="{DynamicResource Func.TreeView.LocalDB}">
                     <TreeViewItem.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Header="{DynamicResource Func.Treeview.LocalDB.ContextMenu.Create}"></MenuItem>
+                            <MenuItem Header="{DynamicResource Func.Treeview.LocalDB.ContextMenu.Create}" Command="c:AllCommands.CreateDatabase"></MenuItem>
                             <MenuItem Header="{DynamicResource Func.Treeview.LocalDB.ContextMenu.Attatch}"></MenuItem>
                         </ContextMenu>
                     </TreeViewItem.ContextMenu>

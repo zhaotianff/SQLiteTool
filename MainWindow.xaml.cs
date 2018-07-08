@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLiteTool.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -83,12 +84,13 @@ namespace SQLiteTool
 
         private void CreateDatabase_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-
+            e.CanExecute = true;
         }
 
         private void CreateDatabase_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-
+            CreateDatabase createDabaseDialog = new CreateDatabase();
+            createDabaseDialog.ShowDialog();
         }
 
         #endregion

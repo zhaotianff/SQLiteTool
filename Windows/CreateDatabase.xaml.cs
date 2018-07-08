@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLiteTool.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace SQLiteTool.Windows
         public CreateDatabase()
         {
             InitializeComponent();
+            this.DataContext = new CreateDatabaseInfo();
         }
     }
 }

@@ -8,11 +8,14 @@ using System.Windows.Input;
 namespace SQLiteTool.Commands
 {
     public static class AllCommands
-    {
+    {      
         #region Function
 
-        private static RoutedUICommand createDatabase = new RoutedUICommand("Create Database", "CreateDatabase", typeof(AllCommands),
-            new InputGestureCollection { new KeyGesture(Key.N, ModifierKeys.Control | ModifierKeys.Alt, "Ctrl + Alt+ N") });
+        /// <summary>
+        /// Create Database Command, Ctrl + Alt + N
+        /// </summary>
+        public static RoutedUICommand createDatabase  = new RoutedUICommand("Create Database", "CreateDatabase", typeof(AllCommands),
+            new InputGestureCollection { new KeyGesture(Key.N, ModifierKeys.Control | ModifierKeys.Alt, "Ctrl + Alt + N") });
 
         public static RoutedUICommand CreateDatabase
         {
@@ -25,6 +28,8 @@ namespace SQLiteTool.Commands
                 createDatabase = value;
             }
         }
+
         #endregion
     }
 }
+
