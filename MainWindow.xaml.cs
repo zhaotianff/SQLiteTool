@@ -81,6 +81,18 @@ namespace SQLiteTool
             SystemCommands.ShowSystemMenu(this, point);
         }
 
+        private void CreateDatabase_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+
+        }
+
+        private void CreateDatabase_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
+
         #endregion
+
+      
     }
 }

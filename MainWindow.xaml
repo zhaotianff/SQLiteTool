@@ -4,8 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SQLiteTool"
+        xmlns:c="clr-namespace:SQLiteTool.Commands"
         mc:Ignorable="d"
         Title="SQLiteTool" Height="720" Width="1280" WindowStartupLocation="CenterScreen" Style="{StaticResource newStyle}">
+    <Window.CommandBindings>
+        <!--Function-->
+        <CommandBinding Command="c:AllCommands.CreateDataBase" CanExecute="CreateDatabase_CanExecute" Executed="CreateDatabase_Executed"/>
+    </Window.CommandBindings>
     <Grid ShowGridLines="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="28"/>
