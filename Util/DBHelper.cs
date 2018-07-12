@@ -5,17 +5,35 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SQLite;
+using System.Diagnostics;
 
 namespace SQLiteTool.Util
 {
     class DBHelper
     {
-        private void CreateDB(string dbName, string DbFilePath)
+        /// <summary>
+        /// Create Database File
+        /// </summary>
+        /// <param name="dbName"></param>
+        /// <param name="DbFilePath"></param>
+        /// <returns></returns>
+        public bool CreateDBFile(string dbName, string DbFilePath)
         {
+            string dbFullPath = DbFilePath + "\\" + dbName;
 
+            Process p = new Process();
+            ProcessStartInfo psInfo = new ProcessStartInfo();
+            psInfo.FileName = "type nul>";
+            psInfo.Arguments = dbFullPath;
+            p.StartInfo = psInfo;
+            p.Start();
+            if (System.IO.File.Exists(dbFullPath))
+                return true;
+            else
+                return false;          
         }
 
-        private bool OpenLocalDB(string dbName)
+        public bool OpenLocalDB(string dbName)
         {
             try
             {
@@ -32,7 +50,7 @@ namespace SQLiteTool.Util
             return false;
         }
 
-        private bool CloseLocalDB(string dbName)
+        public bool CloseLocalDB(string dbName)
         {
             return true;
         }

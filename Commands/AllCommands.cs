@@ -12,10 +12,27 @@ namespace SQLiteTool.Commands
         #region Function
 
         /// <summary>
-        /// Create Database Command, Ctrl + Alt + N
+        /// Show Create Database Dialog, Ctrl + Alt + N
         /// </summary>
-        public static RoutedUICommand createDatabase  = new RoutedUICommand("Create Database", "CreateDatabase", typeof(AllCommands),
+        public static RoutedUICommand showCreateDatabaseDialog  = new RoutedUICommand("Show Create Database Dialog", "ShowCreateDatabaseDialog", typeof(AllCommands),
             new InputGestureCollection { new KeyGesture(Key.N, ModifierKeys.Control | ModifierKeys.Alt, "Ctrl + Alt + N") });
+
+        public static RoutedUICommand ShowCreateDatabaseDialog
+        {
+            get
+            {
+                return showCreateDatabaseDialog;
+            }
+            set
+            {
+                showCreateDatabaseDialog = value;
+            }
+        }
+
+        /// <summary>
+        /// Create Database
+        /// </summary>
+        public static RoutedUICommand createDatabase = new RoutedUICommand("Create Database","CreateDatabase",typeof(AllCommands));
 
         public static RoutedUICommand CreateDatabase
         {
@@ -26,6 +43,19 @@ namespace SQLiteTool.Commands
             set
             {
                 createDatabase = value;
+            }
+        }
+
+        /// <summary>
+        /// Browse Database Path
+        /// </summary>
+        public static RoutedUICommand browseDBPath = new RoutedUICommand("Browse Database Path","BrowseDBPath",typeof(AllCommands));
+
+        public static RoutedUICommand BrowseDBPath
+        {
+            get
+            {
+                return browseDBPath;
             }
         }
 

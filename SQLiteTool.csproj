@@ -63,6 +63,9 @@
     </ApplicationDefinition>
     <Compile Include="Commands\AllCommands.cs" />
     <Compile Include="Model\CreateDatabaseInfo.cs" />
+    <Compile Include="Util\DBHelper.cs" />
+    <Compile Include="Util\GlobalData.cs" />
+    <Compile Include="Util\XmlHelper.cs" />
     <Compile Include="Windows\CreateDatabase.xaml.cs">
       <DependentUpon>CreateDatabase.xaml</DependentUpon>
     </Compile>

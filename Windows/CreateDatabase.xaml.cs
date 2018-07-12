@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using SQLiteTool.Util;
+
 namespace SQLiteTool.Windows
 {
     /// <summary>
@@ -20,10 +22,36 @@ namespace SQLiteTool.Windows
     /// </summary>
     public partial class CreateDatabase : Window
     {
+        CreateDatabaseInfo context;
+        
         public CreateDatabase()
         {
             InitializeComponent();
-            this.DataContext = new CreateDatabaseInfo();
+            context = new CreateDatabaseInfo();
+            this.DataContext = context;
         }
+
+        #region Command
+        private void CreateDatabase_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (context != null)
+            {
+                if (!string.IsNullOrEmpty(context.FilePath) && !string.IsNullOrEmpty(context.Name))
+                {
+                    e.CanExecute = true;
+                }
+            }
+        }
+
+        private void CreateDatabase_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            bool result = GlobalData.CreateInstance().dbHelper.CreateDBFile(context.Name, context.FilePath);
+            if(result == false)
+            {
+                MessageBox.Show("创建失败");
+            }
+            this.Close();
+        }
+        #endregion
     }
 }

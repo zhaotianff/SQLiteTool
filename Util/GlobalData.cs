@@ -13,7 +13,8 @@ namespace SQLiteTool.Util
         private static object obj = new object();
         private static GlobalData _globalData;
 
-        DBHelper dbHelper;
+        public DBHelper dbHelper;
+        public XmlHelper xmlHelper;
 
         public static GlobalData CreateInstance()
         {
@@ -31,6 +32,7 @@ namespace SQLiteTool.Util
         public GlobalData()
         {
             dbHelper = new DBHelper();
+            xmlHelper = new XmlHelper();
         }
 
     }
