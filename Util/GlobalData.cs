@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SQLite;
+using SQLiteTool.Model;
+using NLog;
 
 namespace SQLiteTool.Util
 {
@@ -15,6 +17,10 @@ namespace SQLiteTool.Util
 
         public DBHelper dbHelper;
         public XmlHelper xmlHelper;
+
+        public Logger log = LogManager.GetLogger("logger");
+
+        public List<DatabaseItem> dbList = new List<DatabaseItem>();
 
         public static GlobalData CreateInstance()
         {

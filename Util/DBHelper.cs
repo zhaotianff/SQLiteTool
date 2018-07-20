@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SQLite;
 using System.Diagnostics;
+using SQLiteTool.Model;
 
 namespace SQLiteTool.Util
 {
@@ -41,9 +42,23 @@ namespace SQLiteTool.Util
                 return false;          
         }
 
-        public bool UpdateDBConfig()
+        public bool UpdateDBList()
         {
+            return false;
+        }
 
+        public List<DatabaseItem> GetDatabaseList()
+        {
+            List<DatabaseItem> list = new List<DatabaseItem>();
+            try
+            {
+
+            }
+            catch(Exception ex)
+            {
+
+            }
+            return list;
         }
 
         public bool OpenLocalDB(string dbName)
