@@ -45,13 +45,38 @@ namespace SQLiteTool.Windows
 
         private void CreateDatabase_Executed(object sender, ExecutedRoutedEventArgs e)
         {
+            if (System.IO.File.Exists(context.FilePath + "\\" + context.Name))
+            {
+                MessageBox.Show(Properties.Resources.Txt_DBExist);
+                context.Name = "";
+                context.IsNameFocused = false;
+                context.IsNameFocused = true;
+                return;
+            }
             bool result = GlobalData.CreateInstance().dbHelper.CreateDBFile(context.Name, context.FilePath);
             if(result == false)
             {
-                MessageBox.Show("创建失败");
+                MessageBox.Show(Properties.Resources.Txt_CreateDBFault);
+            }
+            else
+            {
+
+                MessageBox.Show(Properties.Resources.Txt_CreateDBSuccess);
             }
             this.Close();
         }
+
+        private void BrowseDBPath_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            System.Windows.Forms.FolderBrowserDialog folderBorwser = new System.Windows.Forms.FolderBrowserDialog();
+            folderBorwser.Description = Properties.Resources.Txt_ChooseDBPath;
+            if(folderBorwser.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                context.FilePath = folderBorwser.SelectedPath;
+            }
+        }
         #endregion
+
+     
     }
 }

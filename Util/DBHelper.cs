@@ -23,14 +23,27 @@ namespace SQLiteTool.Util
 
             Process p = new Process();
             ProcessStartInfo psInfo = new ProcessStartInfo();
-            psInfo.FileName = "type nul>";
-            psInfo.Arguments = dbFullPath;
+            psInfo.FileName = "cmd";        
+            psInfo.CreateNoWindow = true;
+            psInfo.UseShellExecute = false;
+            psInfo.RedirectStandardInput = true;   
+            psInfo.RedirectStandardOutput = true;  
+            psInfo.RedirectStandardError = true;  
             p.StartInfo = psInfo;
             p.Start();
+            p.StandardInput.WriteLine("type nul>" + dbFullPath + "&exit");
+            p.StandardInput.AutoFlush = true;
+            p.WaitForExit();
+            p.Close();
             if (System.IO.File.Exists(dbFullPath))
                 return true;
             else
                 return false;          
+        }
+
+        public bool UpdateDBConfig()
+        {
+
         }
 
         public bool OpenLocalDB(string dbName)

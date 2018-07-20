@@ -13,6 +13,7 @@ namespace SQLiteTool.Model
 
         private string name;
         private string filePath;
+        private bool isNameFocused;
 
         public string Name
         {
@@ -39,6 +40,20 @@ namespace SQLiteTool.Model
             {
                 filePath = value;
                 RaiseChange("FilePath");
+            }
+        }
+
+
+        public bool IsNameFocused
+        {
+            get 
+            {
+                return isNameFocused; 
+            }
+            set 
+            { 
+                isNameFocused = value;
+                RaiseChange("IsNameFocused");
             }
         }
 
