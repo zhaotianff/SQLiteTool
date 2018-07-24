@@ -62,7 +62,6 @@ namespace SQLiteTool.Windows
             {
 
                 MessageBox.Show(Properties.Resources.Txt_CreateDBSuccess);
-                GlobalData.CreateInstance().log.Debug("dnal");
             }
             this.Close();
         }

@@ -22,6 +22,10 @@ namespace SQLiteTool.Util
 
         public List<DatabaseItem> dbList = new List<DatabaseItem>();
 
+        /// <summary>
+        /// Singleton class, get GlobalData Instance
+        /// </summary>
+        /// <returns></returns>
         public static GlobalData CreateInstance()
         {
             if(_globalData == null)

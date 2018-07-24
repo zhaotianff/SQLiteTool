@@ -7,11 +7,14 @@ using System.Data;
 using System.Data.SQLite;
 using System.Diagnostics;
 using SQLiteTool.Model;
+using NLog;
 
 namespace SQLiteTool.Util
 {
     class DBHelper
     {
+        private Logger log = GlobalData.CreateInstance().log;
+
         /// <summary>
         /// Create Database File
         /// </summary>
@@ -42,8 +45,9 @@ namespace SQLiteTool.Util
                 return false;          
         }
 
-        public bool UpdateDBList()
+        public bool UpdateDBList(DatabaseItem item)
         {
+
             return false;
         }
 
@@ -56,7 +60,7 @@ namespace SQLiteTool.Util
             }
             catch(Exception ex)
             {
-
+                log.Error(ex.Message);
             }
             return list;
         }
