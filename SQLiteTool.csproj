@@ -72,13 +72,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\AllCommands.cs" />
-    <Compile Include="Model\CreateDatabaseInfo.cs" />
     <Compile Include="Model\DatabaseItem.cs" />
     <Compile Include="Util\DBHelper.cs" />
     <Compile Include="Util\FocusExtension.cs" />
     <Compile Include="Util\GlobalData.cs" />
+    <Compile Include="Util\NotifyPropertyBase.cs" />
     <Compile Include="Util\XmlHelper.cs" />
-    <Compile Include="Windows\CreateDatabase.xaml.cs">
+    <Compile Include="ViewModels\CreateDatabaseViewModel.cs" />
+    <Compile Include="Views\CreateDatabase.xaml.cs">
       <DependentUpon>CreateDatabase.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
@@ -118,7 +119,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\CreateDatabase.xaml">
+    <Page Include="Views\CreateDatabase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

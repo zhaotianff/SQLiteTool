@@ -1,16 +1,14 @@
-﻿using System;
+﻿using SQLiteTool.Util;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SQLiteTool.Model
+namespace SQLiteTool.ViewModels
 {
-    class CreateDatabaseInfo : INotifyPropertyChanged
+    class CreateDatabaseViewModel : NotifyPropertyBase
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         private string name;
         private string filePath;
         private bool isNameFocused;
@@ -46,22 +44,14 @@ namespace SQLiteTool.Model
 
         public bool IsNameFocused
         {
-            get 
+            get
             {
-                return isNameFocused; 
+                return isNameFocused;
             }
-            set 
-            { 
+            set
+            {
                 isNameFocused = value;
                 RaiseChange("IsNameFocused");
-            }
-        }
-
-        public void RaiseChange(string property)
-        {
-            if(PropertyChanged != null)
-            {
-                PropertyChanged.Invoke(this,new PropertyChangedEventArgs(property));
             }
         }
     }

@@ -13,8 +13,12 @@ namespace SQLiteTool.Util
 {
     class DBHelper
     {
-        private Logger log = GlobalData.CreateInstance().log;
+        private Logger log;
 
+        public DBHelper(Logger _log)
+        {
+            log = _log;
+        }
         /// <summary>
         /// Create Database File
         /// </summary>

@@ -14,20 +14,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 using SQLiteTool.Util;
+using SQLiteTool.ViewModels;
 
-namespace SQLiteTool.Windows
+namespace SQLiteTool.Views
 {
     /// <summary>
     /// CreateDatabase.xaml 的交互逻辑
     /// </summary>
     public partial class CreateDatabase : Window
     {
-        CreateDatabaseInfo context;
+        CreateDatabaseViewModel context;
         
         public CreateDatabase()
         {
             InitializeComponent();
-            context = new CreateDatabaseInfo();
+            context = new CreateDatabaseViewModel();
             this.DataContext = context;
         }
 

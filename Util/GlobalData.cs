@@ -41,7 +41,7 @@ namespace SQLiteTool.Util
 
         public GlobalData()
         {
-            dbHelper = new DBHelper();
+            dbHelper = new DBHelper(log);
             xmlHelper = new XmlHelper();
         }
 

@@ -57,14 +57,20 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <TreeView Grid.Column="0">
+                <TreeView.DataContext>
+                    <HierarchicalDataTemplate>
+                        <StackPanel  Orientation="Horizontal" Margin="2">                      
+                            <ContentPresenter  Content="{Binding Path=Name}" Margin="2,0"/>
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                </TreeView.DataContext>
                 <TreeViewItem Header="{DynamicResource Func.TreeView.LocalDB}">
                     <TreeViewItem.ContextMenu>
                         <ContextMenu>
                             <MenuItem Header="{DynamicResource Func.Treeview.LocalDB.ContextMenu.Create}" Command="c:AllCommands.ShowCreateDatabaseDialog"></MenuItem>
                             <MenuItem Header="{DynamicResource Func.Treeview.LocalDB.ContextMenu.Attatch}"></MenuItem>
                         </ContextMenu>
-                    </TreeViewItem.ContextMenu>
-                    <TreeViewItem Header="测试数据库"/>
+                    </TreeViewItem.ContextMenu>  
                 </TreeViewItem>
                 <TreeViewItem Header="{DynamicResource Func.TreeView.NetworkDB}">
                     <TreeViewItem Header="测试数据库"/>
