@@ -72,11 +72,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\AllCommands.cs" />
+    <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="Model\DatabaseItem.cs" />
     <Compile Include="Util\DBHelper.cs" />
     <Compile Include="Util\FocusExtension.cs" />
     <Compile Include="Util\GlobalData.cs" />
     <Compile Include="Util\NotifyPropertyBase.cs" />
+    <Compile Include="Util\NotifyPropertyBaseEx.cs" />
     <Compile Include="Util\XmlHelper.cs" />
     <Compile Include="ViewModels\CreateDatabaseViewModel.cs" />
     <Compile Include="Views\CreateDatabase.xaml.cs">

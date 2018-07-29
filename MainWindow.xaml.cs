@@ -1,5 +1,4 @@
-﻿using SQLiteTool.Views;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using SQLiteTool.Views;
+using SQLiteTool.Model;
+
 namespace SQLiteTool
 {
     /// <summary>
@@ -21,10 +23,19 @@ namespace SQLiteTool
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainWindowViewModel mainDataContext;
         public MainWindow()
         {
             InitializeComponent();
             InitializeCommands();
+
+            mainDataContext = new MainWindowViewModel();
+            this.DataContext = mainDataContext;
+
+            List<DatabaseTree> list = new List<DatabaseTree>();
+
+            list.Add(new DatabaseTree() { Children = null, IsSelected = false, Item = new DatabaseItem() {Name = "sfd",OpenFlag = true,Path = "cvbxcvxcvxcv" } });
+            mainDataContext.TreeList = list;
         }
 
 

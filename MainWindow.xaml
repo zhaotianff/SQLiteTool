@@ -56,11 +56,11 @@
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TreeView Grid.Column="0">
+            <TreeView Grid.Column="0" ItemsSource="{Binding TreeList}">
                 <TreeView.DataContext>
                     <HierarchicalDataTemplate>
                         <StackPanel  Orientation="Horizontal" Margin="2">                      
-                            <ContentPresenter  Content="{Binding Path=Name}" Margin="2,0"/>
+                            <ContentPresenter  Content="{Binding Path=Item.Name}" Margin="2,0"/>
                         </StackPanel>
                     </HierarchicalDataTemplate>
                 </TreeView.DataContext>
