@@ -8,10 +8,6 @@
         xmlns:c="clr-namespace:SQLiteTool.Commands"
         mc:Ignorable="d"
         Title="SQLiteTool" Height="720" Width="1280" WindowStartupLocation="CenterScreen" Style="{StaticResource newStyle}">
-    <Window.CommandBindings>
-        <!--Function-->
-        <CommandBinding Command="c:AllCommands.ShowCreateDatabaseDialog" CanExecute="CreateDatabase_CanExecute" Executed="CreateDatabase_Executed"/>
-    </Window.CommandBindings>
     <Grid ShowGridLines="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="28"/>
@@ -23,7 +19,7 @@
         <!--菜单-->
         <Menu>
             <MenuItem Header="{DynamicResource Menu.File}">
-                <MenuItem Header="{DynamicResource Menu.File.Create}" Command="c:AllCommands.ShowCreateDatabaseDialog"/>
+                <MenuItem Header="{DynamicResource Menu.File.Create}"/>
                 <MenuItem Header="{DynamicResource Menu.File.Attatch}"/>
                 <MenuItem Header="{DynamicResource Menu.File.Save}"/>
                 <MenuItem Header="{DynamicResource Menu.File.SaveAll}"/>
@@ -58,8 +54,14 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <TreeView Grid.Column="0" ItemsSource="{Binding DatabaseItemList}">
+                <TreeView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="{DynamicResource Func.Treeview.LocalDB.ContextMenu.Create}" Command="{Binding ShowCreateDatabaseDialog}"></MenuItem>
+                        <MenuItem Header="{DynamicResource Func.Treeview.LocalDB.ContextMenu.Attatch}"></MenuItem>
+                    </ContextMenu>
+                </TreeView.ContextMenu>
                 <TreeView.ItemTemplate>
-                    <HierarchicalDataTemplate DataType="{x:Type model:DatabaseItem}" ItemsSource="{Binding Path=Children}">
+                    <HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
                         <StackPanel Orientation="Horizontal">                         
                             <TextBlock VerticalAlignment="Center" Text="{Binding DisplayName}"/>                       
                             <StackPanel.ToolTip>

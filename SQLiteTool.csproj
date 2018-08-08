@@ -72,9 +72,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\AllCommands.cs" />
+    <Compile Include="Commands\DelegateCommand.cs" />
+    <Compile Include="Commands\DelegateCommandGen.cs" />
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="Model\DatabaseItem.cs" />
     <Compile Include="Util\DBHelper.cs" />
+    <Compile Include="Util\DialogCloser.cs" />
     <Compile Include="Util\FocusExtension.cs" />
     <Compile Include="Util\GlobalData.cs" />
     <Compile Include="Util\NotifyPropertyBase.cs" />

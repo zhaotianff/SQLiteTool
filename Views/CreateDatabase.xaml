@@ -3,10 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:c="clr-namespace:SQLiteTool.Commands"
         xmlns:util="clr-namespace:SQLiteTool.Util"
-        Title="{DynamicResource Windows.CreateDatabase.Title}" Height="160" Width="500" SnapsToDevicePixels="True" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="{DynamicResource Windows.CreateDatabase.Title}" Height="160" Width="500" SnapsToDevicePixels="True" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        util:DialogCloser.DialogResult="{Binding CreateDialogResult}">
     <Window.CommandBindings>
-        <CommandBinding Command="c:AllCommands.CreateDatabase" CanExecute="CreateDatabase_CanExecute" Executed="CreateDatabase_Executed"/>
-        <CommandBinding Command="c:AllCommands.BrowseDBPath" Executed="BrowseDBPath_Executed"/>
     </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
@@ -21,11 +20,11 @@
         <Grid Grid.Row="1" VerticalAlignment="Center">
             <Label Content="{DynamicResource Windows.CreateDatabase.Path}" Width="70" HorizontalContentAlignment="Center" HorizontalAlignment="Left" ></Label>
             <TextBox Width="380" HorizontalAlignment="Right" Margin="0,0,42,0" VerticalContentAlignment="Center" Text="{Binding FilePath,UpdateSourceTrigger=PropertyChanged}"></TextBox>
-            <Button Width="30" Content="{DynamicResource Windows.CreateDatabase.Browse}" VerticalContentAlignment="Top" HorizontalAlignment="Right" Margin="0,0,10,0" Command="c:AllCommands.BrowseDBPath"></Button>
+            <Button Width="30" Content="{DynamicResource Windows.CreateDatabase.Browse}" VerticalContentAlignment="Top" HorizontalAlignment="Right" Margin="0,0,10,0" Command="{Binding BrowseDBPathCommand}"></Button>
         </Grid>
         <Grid Grid.Row="2">
-            <Button HorizontalAlignment="Right" Content="{DynamicResource Windows.CreateDatabase.OK}" Margin="0,0,65,0" Width="50" Height="28" Command="c:AllCommands.CreateDatabase"></Button>
-            <Button HorizontalAlignment="Right" Content="{DynamicResource Windows.CreateDatabase.Cancel}" Width="50" Margin="0,0,5,0" Height="28"/>
+            <Button HorizontalAlignment="Right" Content="{DynamicResource Windows.CreateDatabase.OK}" Margin="0,0,65,0" Width="50" Height="28" Command="{Binding CreateDatabaseCommand}"></Button>
+            <Button HorizontalAlignment="Right" Content="{DynamicResource Windows.CreateDatabase.Cancel}" Width="50" Margin="0,0,5,0" Height="28" Command="{Binding CloseDialogCommand}"/>
         </Grid>
     </Grid>
 </Window>
