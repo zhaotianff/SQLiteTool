@@ -8,6 +8,7 @@ using SQLiteTool.Model;
 using System.Windows.Input;
 using SQLiteTool.Commands;
 using System.Windows;
+using System.Xml.Linq;
 
 namespace SQLiteTool.ViewModels
 {
@@ -17,6 +18,8 @@ namespace SQLiteTool.ViewModels
         private string filePath;
         private bool isNameFocused;
         private bool? createDialogResult;
+
+        GlobalData globalData = GlobalData.CreateInstance();
 
         public string Name
         {
@@ -111,7 +114,10 @@ namespace SQLiteTool.ViewModels
 
                 MessageBox.Show(Properties.Resources.Txt_CreateDBSuccess);
             }
-            CreateDialogResult = true;
+
+            UpdateDBConfig();
+            globalData.mainWindowViewModel.RefreshDatabaseList();
+            CreateDialogResult = true;           
         }
 
         public void BrowseDBPath()
@@ -127,6 +133,23 @@ namespace SQLiteTool.ViewModels
         public void CloseDialog()
         {
             CreateDialogResult = false;
+        }
+
+        public void UpdateDBConfig()
+        {
+            try
+            {
+                globalData.xmlHelper.OpenXml(globalData.ConfigFilePath);
+                globalData.xmlHelper.GetDocument().Root.Element("LocalDBList").Add(new XElement(
+                    "Item",new XElement("FilePath", filePath),new XElement("DisplayName", name),new XElement("Description", name)
+                    ));
+                globalData.xmlHelper.Save();
+            }
+            catch(Exception ex)
+            {
+                GlobalData.CreateInstance().log.Error(ex.Message);
+            }
+
         }
     }
 }

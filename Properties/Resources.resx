@@ -129,4 +129,19 @@
   <data name="Txt_DBExist" xml:space="preserve">
     <value>数据库文件已经存在</value>
   </data>
+  <data name="Txt_LocalDB" xml:space="preserve">
+    <value>本地数据库</value>
+  </data>
+  <data name="Txt_Status_ChooseDatabase" xml:space="preserve">
+    <value>请先选择数据库</value>
+  </data>
+  <data name="Txt_Status_OpenDBFailed" xml:space="preserve">
+    <value>打开数据库失败</value>
+  </data>
+  <data name="Txt_Status_OpenDBSuccess" xml:space="preserve">
+    <value>打开数据库成功</value>
+  </data>
+  <data name="Txt_Status_Ready" xml:space="preserve">
+    <value>准备就绪</value>
+  </data>
 </root>

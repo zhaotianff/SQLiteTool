@@ -44,7 +44,10 @@
         </Menu>
         
         <!--工具栏-->
-        <WrapPanel Grid.Row="1"></WrapPanel>
+        <WrapPanel Grid.Row="1">
+            <Button Content="&#xf2b5;" FontFamily="{StaticResource fonticon}" Style="{StaticResource ButtonStyleForFunc}" ToolTip="{DynamicResource ToolBar.OpenDatabase}"/>
+            <Button Content="&#xf120;" FontFamily="{StaticResource fonticon}" Style="{StaticResource ButtonStyleForFunc}" ToolTip="{DynamicResource ToolBar.NewQuery}"></Button>
+        </WrapPanel>
         
         <!--功能区域-->
         <Grid Grid.Row="2" ShowGridLines="False">
@@ -64,9 +67,6 @@
                     <HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
                         <StackPanel Orientation="Horizontal">                         
                             <TextBlock VerticalAlignment="Center" Text="{Binding DisplayName}"/>                       
-                            <StackPanel.ToolTip>
-                                <TextBlock VerticalAlignment="Center" Text="{Binding Descrption}" TextWrapping="Wrap" MaxWidth="200"/>
-                            </StackPanel.ToolTip>
                         </StackPanel>
                     </HierarchicalDataTemplate>
                 </TreeView.ItemTemplate>
@@ -89,7 +89,7 @@
         </Grid>
         <!--状态栏-->
         <Canvas Grid.Row="3">
-            <TextBlock Text="{Binding StatusInfo}"></TextBlock>
+            <Label Content="{Binding StatusInfo}" VerticalAlignment="Center" VerticalContentAlignment="Center"></Label>
         </Canvas>
     </Grid>
 </Window>

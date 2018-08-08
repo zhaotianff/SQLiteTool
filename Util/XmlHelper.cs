@@ -97,5 +97,10 @@ namespace SQLiteTool.Util
 
             return list;
         }
+
+        public IEnumerable<XElement> GetElementByNodeName(string path)
+        {
+            return doc.XPathSelectElements(path);
+        }
     }
 }

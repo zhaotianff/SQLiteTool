@@ -24,6 +24,8 @@ namespace SQLiteTool.Util
         public CreateDatabaseViewModel createDatabaseViewModel;
         public MainWindowViewModel mainWindowViewModel;
 
+        public string ConfigFilePath = Environment.CurrentDirectory + "\\config\\DBList.xml";
+
         /// <summary>
         /// Singleton class, get GlobalData Instance
         /// </summary>

@@ -27,7 +27,7 @@ namespace SQLiteTool.Util
         /// <returns></returns>
         public bool CreateDBFile(string dbName, string DbFilePath)
         {
-            string dbFullPath = DbFilePath + "\\" + dbName;
+            string dbFullPath = DbFilePath + "\\" + dbName + ".db";
 
             Process p = new Process();
             ProcessStartInfo psInfo = new ProcessStartInfo();
