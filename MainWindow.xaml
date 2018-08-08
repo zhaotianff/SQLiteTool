@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SQLiteTool"
+        xmlns:model="clr-namespace:SQLiteTool.Model"
         xmlns:c="clr-namespace:SQLiteTool.Commands"
         mc:Ignorable="d"
         Title="SQLiteTool" Height="720" Width="1280" WindowStartupLocation="CenterScreen" Style="{StaticResource newStyle}">
@@ -56,25 +57,17 @@
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TreeView Grid.Column="0" ItemsSource="{Binding TreeList}">
-                <TreeView.DataContext>
-                    <HierarchicalDataTemplate>
-                        <StackPanel  Orientation="Horizontal" Margin="2">                      
-                            <ContentPresenter  Content="{Binding Path=Item.Name}" Margin="2,0"/>
+            <TreeView Grid.Column="0" ItemsSource="{Binding DatabaseItemList}">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate DataType="{x:Type model:DatabaseItem}" ItemsSource="{Binding Path=Children}">
+                        <StackPanel Orientation="Horizontal">                         
+                            <TextBlock VerticalAlignment="Center" Text="{Binding DisplayName}"/>                       
+                            <StackPanel.ToolTip>
+                                <TextBlock VerticalAlignment="Center" Text="{Binding Descrption}" TextWrapping="Wrap" MaxWidth="200"/>
+                            </StackPanel.ToolTip>
                         </StackPanel>
                     </HierarchicalDataTemplate>
-                </TreeView.DataContext>
-                <TreeViewItem Header="{DynamicResource Func.TreeView.LocalDB}">
-                    <TreeViewItem.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Header="{DynamicResource Func.Treeview.LocalDB.ContextMenu.Create}" Command="c:AllCommands.ShowCreateDatabaseDialog"></MenuItem>
-                            <MenuItem Header="{DynamicResource Func.Treeview.LocalDB.ContextMenu.Attatch}"></MenuItem>
-                        </ContextMenu>
-                    </TreeViewItem.ContextMenu>  
-                </TreeViewItem>
-                <TreeViewItem Header="{DynamicResource Func.TreeView.NetworkDB}">
-                    <TreeViewItem Header="测试数据库"/>
-                </TreeViewItem>
+                </TreeView.ItemTemplate>
             </TreeView>
             <GridSplitter Grid.Column="1"  Width="1"  HorizontalAlignment="Center" Background="LightSkyBlue" BorderBrush="Transparent" />
             <Grid Grid.Column="2" ShowGridLines="False">

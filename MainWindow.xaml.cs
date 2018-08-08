@@ -30,12 +30,7 @@ namespace SQLiteTool
             InitializeCommands();
 
             mainDataContext = new MainWindowViewModel();
-            this.DataContext = mainDataContext;
-
-            List<DatabaseTree> list = new List<DatabaseTree>();
-
-            list.Add(new DatabaseTree() { Children = null, IsSelected = false, Item = new DatabaseItem() {Name = "sfd",OpenFlag = true,Path = "cvbxcvxcvxcv" } });
-            mainDataContext.TreeList = list;
+            this.DataContext = mainDataContext;          
         }
 
 

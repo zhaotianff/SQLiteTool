@@ -6,12 +6,21 @@ using System.Threading.Tasks;
 
 namespace SQLiteTool.Model
 {
-    class DatabaseItem
+    public class DatabaseItem
     {
-        public string Name { get; set; }
+        /// <summary>
+        /// Reserved
+        /// </summary>
+        public string Icon { get; set; }     
+        public string DisplayName { get; set; }
 
-        public string Path { get; set; }
+        public string Descrption { get; set; }
 
-        public bool OpenFlag { get; set; }
+        public List<DatabaseItem> Children { get; set; }
+
+        public DatabaseItem()
+        {
+            Children = new List<DatabaseItem>();
+        }
     }
 }
