@@ -30,6 +30,7 @@ namespace SQLiteTool.Views
             InitializeComponent();
             context = new CreateDatabaseViewModel();
             this.DataContext = context;
+            GlobalData.CreateInstance().createDatabaseViewModel = context;
         }
      
     }

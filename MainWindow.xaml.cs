@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 using SQLiteTool.Views;
 using SQLiteTool.Model;
+using SQLiteTool.Util;
 
 namespace SQLiteTool
 {
@@ -30,7 +31,8 @@ namespace SQLiteTool
             InitializeCommands();
 
             mainDataContext = new MainWindowViewModel();
-            this.DataContext = mainDataContext;          
+            this.DataContext = mainDataContext;
+            GlobalData.CreateInstance().mainWindowViewModel = mainDataContext;  
         }
 
 

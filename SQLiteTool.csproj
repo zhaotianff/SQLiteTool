@@ -76,6 +76,11 @@
     <Compile Include="Commands\DelegateCommandGen.cs" />
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="Model\DatabaseItem.cs" />
+    <Compile Include="Properties\Resources.en.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.en.resx</DependentUpon>
+    </Compile>
     <Compile Include="Util\DBHelper.cs" />
     <Compile Include="Util\DialogCloser.cs" />
     <Compile Include="Util\FocusExtension.cs" />
@@ -146,6 +151,10 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.en.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

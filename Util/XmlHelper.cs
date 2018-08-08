@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Xml.XPath;
 
 namespace SQLiteTool.Util
 {
@@ -78,6 +79,23 @@ namespace SQLiteTool.Util
                 return false;
             }
             return true;
+        }
+
+        /// <summary>
+        /// Get Value By XML Node Name Full Path
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public List<string> GetValueByNodeName(string path)
+        {
+            List<string> list = new List<string>();
+
+            foreach (var item in doc.XPathSelectElements(path))
+            {
+                list.Add(item.Value);
+            }
+
+            return list;
         }
     }
 }

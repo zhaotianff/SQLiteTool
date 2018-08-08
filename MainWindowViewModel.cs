@@ -46,5 +46,13 @@ namespace SQLiteTool
             CreateDatabase dialog = new Views.CreateDatabase();
             dialog.ShowDialog();
         }
+
+
+        public List<DatabaseItem> LoadDatabaseList()
+        {
+            List<DatabaseItem> list = new List<DatabaseItem>();
+
+            return list;
+        }
     }
 }

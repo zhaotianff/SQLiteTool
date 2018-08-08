@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SQLite;
 using SQLiteTool.Model;
 using NLog;
+using SQLiteTool.ViewModels;
 
 namespace SQLiteTool.Util
 {
@@ -20,7 +21,8 @@ namespace SQLiteTool.Util
 
         public Logger log = LogManager.GetLogger("logger");
 
-        public List<DatabaseItem> dbList = new List<DatabaseItem>();
+        public CreateDatabaseViewModel createDatabaseViewModel;
+        public MainWindowViewModel mainWindowViewModel;
 
         /// <summary>
         /// Singleton class, get GlobalData Instance

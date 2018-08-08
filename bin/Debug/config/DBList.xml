@@ -2,14 +2,14 @@
 <DatabaseList>
 	<LocalDBList>
 		<Item>
-			<Path></Path>
-			<Alias></Alias>
+			<FilePath></FilePath>
+			<DisplayName></DisplayName>
 		</Item>
 	</LocalDBList>
 <NetworkDBList>
 		<Item>
-			<Path></Path>
-			<Alias></Alias>
+			<FilePath></FilePath>
+			<DisplayName></DisplayName>
 		</Item>
 </NetworkDBList>
 </DatabaseList>
