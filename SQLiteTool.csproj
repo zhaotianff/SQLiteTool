@@ -124,6 +124,7 @@
     <Compile Include="Util\GlobalData.cs" />
     <Compile Include="Util\NotifyPropertyBase.cs" />
     <Compile Include="Util\NotifyPropertyBaseEx.cs" />
+    <Compile Include="Util\RichTextBoxHelper.cs" />
     <Compile Include="Util\VisualTreeUtil.cs" />
     <Compile Include="Util\XmlHelper.cs" />
     <Compile Include="ViewModels\CreateDatabaseViewModel.cs" />

@@ -11,6 +11,7 @@ using SQLiteTool.Commands;
 using SQLiteTool.Views;
 using System.Windows;
 using System.Windows.Controls;
+using System.Data;
 
 namespace SQLiteTool
 {
@@ -20,8 +21,12 @@ namespace SQLiteTool
         public ICommand ShowCreateDatabaseDialog { get; private set; }
 
         public ICommand SelectDBItemCommand { get; private set; }
+
+        public ICommand OpenDatabaseCommand { get; private set; }
+
+        public ICommand ExecuteQueryCommand { get; private set; }
    
-        public bool IsCreateDialogShow { get; set; }   
+        public bool IsCreateDialogShow { get; set; }
 
         public MainWindowViewModel()
         {
@@ -29,8 +34,10 @@ namespace SQLiteTool
 
             globalData = GlobalData.CreateInstance();
 
-            ShowCreateDatabaseDialog = new DelegateCommand(ShowCreateDialog,()=> {return  !IsCreateDialogShow; });
+            ShowCreateDatabaseDialog = new DelegateCommand(ShowCreateDialog, () => { return !IsCreateDialogShow; });
             SelectDBItemCommand = new DelegateCommand<RoutedEventArgs>(SelectDBFunc);
+            OpenDatabaseCommand = new DelegateCommand(OpenDatabase, () => {return (SelectedDBItem != null && SelectedDBItem.OpenState == false && SelectedDBItem.Children == null); });
+            ExecuteQueryCommand = new DelegateCommand(ExecuteQuery,()=> { return !string.IsNullOrEmpty(SQLStr); });
 
             DatabaseItemList = LoadDatabaseList();
             StatusInfo = Properties.Resources.Txt_Status_Ready;
@@ -67,6 +74,53 @@ namespace SQLiteTool
             CreateDatabase dialog = new Views.CreateDatabase();
             dialog.ShowDialog();
         }
+
+        private DatabaseItem selectedDBItem;
+
+        public DatabaseItem SelectedDBItem
+        {
+            get
+            {
+                return selectedDBItem;
+            }
+            set
+            {
+                selectedDBItem = value;
+                RaiseChange("SelectedDBItem");
+            }
+        }
+
+        private DataView queryResultTable;
+
+        public DataView QueryResultTable
+        {
+            get
+            {
+                return queryResultTable;
+            }
+
+            set
+            {
+                queryResultTable = value;
+                RaiseChange("QueryResultTable");
+            }
+        }
+
+        public string SQLStr
+        {
+            get
+            {
+                return sQLStr;
+            }
+
+            set
+            {
+                sQLStr = value;
+                RaiseChange("SQLStr");
+            }
+        }
+
+        private string sQLStr;
 
 
         public List<DatabaseItem> LoadDatabaseList()
@@ -121,11 +175,33 @@ namespace SQLiteTool
 
             DatabaseItem item = treeViewItem.Header as DatabaseItem;
             if(item != null)
-            {
-                StatusInfo = item.DisplayName;
-            }
+            {            
+                SelectedDBItem = item;               
+            }               
+        }
 
-               
+        private void OpenDatabase()
+        {            
+            var openedItem = DatabaseItemList.Where(x => x.OpenState == true).FirstOrDefault();
+
+            if (openedItem != null && openedItem.FilePath != SelectedDBItem.FilePath)
+                globalData.dbHelper.CloseLocalDB(openedItem.FilePath);
+
+            var result = globalData.dbHelper.OpenLocalDB(SelectedDBItem.FilePath);
+
+            if(result == true)
+            {
+                StatusInfo =Properties.Resources.Txt_OpenDB + "[" + SelectedDBItem.DisplayName + "]" + Properties.Resources.Txt_Status_Success + "(" + SelectedDBItem.FilePath + ")";
+            }
+            else
+            {
+                StatusInfo = SelectedDBItem.DisplayName + Properties.Resources.Txt_OpenDB;
+            }
+        }
+
+        public void ExecuteQuery()
+        {
+            QueryResultTable = globalData.dbHelper.ExecuteQuery(SQLStr).DefaultView;
         }
     }
 }

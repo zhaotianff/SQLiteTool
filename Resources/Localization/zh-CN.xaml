@@ -58,4 +58,5 @@
     <!--工具栏-->
     <s:String x:Key="ToolBar.OpenDatabase">打开数据库</s:String>
     <s:String x:Key="ToolBar.NewQuery">新建查询</s:String>
+    <s:String x:Key="ToolBar.Execute">执行查询</s:String>
 </ResourceDictionary>

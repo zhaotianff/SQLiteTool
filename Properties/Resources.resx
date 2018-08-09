@@ -132,16 +132,19 @@
   <data name="Txt_LocalDB" xml:space="preserve">
     <value>本地数据库</value>
   </data>
+  <data name="Txt_OpenDB" xml:space="preserve">
+    <value>打开数据库</value>
+  </data>
   <data name="Txt_Status_ChooseDatabase" xml:space="preserve">
     <value>请先选择数据库</value>
   </data>
-  <data name="Txt_Status_OpenDBFailed" xml:space="preserve">
-    <value>打开数据库失败</value>
-  </data>
-  <data name="Txt_Status_OpenDBSuccess" xml:space="preserve">
-    <value>打开数据库成功</value>
+  <data name="Txt_Status_Failed" xml:space="preserve">
+    <value>失败</value>
   </data>
   <data name="Txt_Status_Ready" xml:space="preserve">
     <value>准备就绪</value>
+  </data>
+  <data name="Txt_Status_Success" xml:space="preserve">
+    <value>成功</value>
   </data>
 </root>

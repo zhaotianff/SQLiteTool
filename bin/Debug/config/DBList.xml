@@ -21,6 +21,16 @@
       <DisplayName>daily</DisplayName>
       <Description>daily</Description>
     </Item>
+    <Item>
+      <FilePath>C:\Users\ZhaoJia\Desktop</FilePath>
+      <DisplayName>abcdd</DisplayName>
+      <Description>abcdd</Description>
+    </Item>
+    <Item>
+      <FilePath>D:\mm.db</FilePath>
+      <DisplayName>mm</DisplayName>
+      <Description>mm</Description>
+    </Item>
   </LocalDBList>
   <NetworkDBList>
     <Item>

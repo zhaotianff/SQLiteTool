@@ -106,6 +106,15 @@ namespace SQLiteTool.Properties {
         }
         
         /// <summary>
+        ///   查找类似 打开数据库 的本地化字符串。
+        /// </summary>
+        internal static string Txt_OpenDB {
+            get {
+                return ResourceManager.GetString("Txt_OpenDB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 请先选择数据库 的本地化字符串。
         /// </summary>
         internal static string Txt_Status_ChooseDatabase {
@@ -115,20 +124,11 @@ namespace SQLiteTool.Properties {
         }
         
         /// <summary>
-        ///   查找类似 打开数据库失败 的本地化字符串。
+        ///   查找类似 失败 的本地化字符串。
         /// </summary>
-        internal static string Txt_Status_OpenDBFailed {
+        internal static string Txt_Status_Failed {
             get {
-                return ResourceManager.GetString("Txt_Status_OpenDBFailed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 打开数据库成功 的本地化字符串。
-        /// </summary>
-        internal static string Txt_Status_OpenDBSuccess {
-            get {
-                return ResourceManager.GetString("Txt_Status_OpenDBSuccess", resourceCulture);
+                return ResourceManager.GetString("Txt_Status_Failed", resourceCulture);
             }
         }
         
@@ -138,6 +138,15 @@ namespace SQLiteTool.Properties {
         internal static string Txt_Status_Ready {
             get {
                 return ResourceManager.GetString("Txt_Status_Ready", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 成功 的本地化字符串。
+        /// </summary>
+        internal static string Txt_Status_Success {
+            get {
+                return ResourceManager.GetString("Txt_Status_Success", resourceCulture);
             }
         }
     }

@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SQLiteTool"
         xmlns:model="clr-namespace:SQLiteTool.Model"
+        xmlns:util="clr-namespace:SQLiteTool.Util"
         xmlns:c="clr-namespace:SQLiteTool.Commands"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-         xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
+        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
         mc:Ignorable="d"
         Title="SQLiteTool" Height="720" Width="1280" WindowStartupLocation="CenterScreen" Style="{StaticResource newStyle}">
     <Grid ShowGridLines="True">
@@ -47,8 +48,8 @@
         
         <!--工具栏-->
         <WrapPanel Grid.Row="1">
-            <Button Content="&#xf2b5;" FontFamily="{StaticResource fonticon}" Style="{StaticResource ButtonStyleForFunc}" ToolTip="{DynamicResource ToolBar.OpenDatabase}"/>
-            <Button Content="&#xf120;" FontFamily="{StaticResource fonticon}" Style="{StaticResource ButtonStyleForFunc}" ToolTip="{DynamicResource ToolBar.NewQuery}"></Button>
+            <Button Content="&#xf2b5;" FontFamily="{StaticResource fonticon}" Style="{StaticResource ButtonStyleForFunc}" ToolTip="{DynamicResource ToolBar.OpenDatabase}" Command="{Binding OpenDatabaseCommand}"/>
+            <Button Content="&#xf120;" FontFamily="{StaticResource fonticon}" Style="{StaticResource ButtonStyleForFunc}" ToolTip="{DynamicResource ToolBar.Execute}" Command="{Binding ExecuteQueryCommand}"></Button>
         </WrapPanel>
         
         <!--功能区域-->
@@ -85,13 +86,19 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="220"/>
                 </Grid.RowDefinitions>
-                <RichTextBox Grid.Row="0"></RichTextBox>
+                <RichTextBox Grid.Row="0">
+                    <FlowDocument>
+                        <Paragraph>
+                            <Run Text="{Binding SQLStr, Mode=TwoWay}"/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
                 <GridSplitter Grid.Row="1" Height="2" ResizeDirection="Rows" Background="LightSkyBlue" BorderBrush="Transparent" HorizontalAlignment="Stretch"/>
-                <ListView Grid.Row="2">
-                    <ListView.View>
-                        <GridView></GridView>
-                    </ListView.View>
-                </ListView>
+
+                <Grid Grid.Row="2">
+                    <DataGrid  ItemsSource="{Binding QueryResultTable}">
+                    </DataGrid>
+                </Grid>
             </Grid>
         </Grid>
         <!--状态栏-->

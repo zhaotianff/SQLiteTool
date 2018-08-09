@@ -14,6 +14,7 @@ namespace SQLiteTool.Util
     class DBHelper
     {
         private Logger log;
+        SQLiteConnection con;
 
         public DBHelper(Logger _log)
         {
@@ -55,26 +56,12 @@ namespace SQLiteTool.Util
             return false;
         }
 
-        public List<DatabaseItem> GetDatabaseList()
-        {
-            List<DatabaseItem> list = new List<DatabaseItem>();
-            try
-            {
-
-            }
-            catch(Exception ex)
-            {
-                log.Error(ex.Message);
-            }
-            return list;
-        }
-
-        public bool OpenLocalDB(string dbName)
+        public bool OpenLocalDB(string dbPath)
         {
             try
             {
-                string conStr = "server=.database=" + dbName;
-                SQLiteConnection con = new SQLiteConnection(conStr);
+                string conStr = string.Format("Data Source={0};Version=3;", dbPath);
+                con= new SQLiteConnection(conStr);
                 con.Open();
                 if (con.State == ConnectionState.Open)
                     return true;
@@ -86,9 +73,24 @@ namespace SQLiteTool.Util
             return false;
         }
 
-        public bool CloseLocalDB(string dbName)
+        public bool CloseLocalDB(string dbPath)
         {
             return true;
+        }
+
+        public DataTable ExecuteQuery(string sql)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                SQLiteDataAdapter sda = new SQLiteDataAdapter(sql,con);
+                sda.Fill(dt);
+            }
+            catch(Exception ex)
+            {
+                log.Error(ex.Message);
+            }
+            return dt;
         }
 
     }

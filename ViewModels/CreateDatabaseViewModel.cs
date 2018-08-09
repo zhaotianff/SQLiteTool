@@ -141,7 +141,7 @@ namespace SQLiteTool.ViewModels
             {
                 globalData.xmlHelper.OpenXml(globalData.ConfigFilePath);
                 globalData.xmlHelper.GetDocument().Root.Element("LocalDBList").Add(new XElement(
-                    "Item",new XElement("FilePath", filePath),new XElement("DisplayName", name),new XElement("Description", name)
+                    "Item",new XElement("FilePath", filePath + "\\" + name + ".db"),new XElement("DisplayName", name),new XElement("Description", name)
                     ));
                 globalData.xmlHelper.Save();
             }
