@@ -43,6 +43,10 @@
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Opacity" Value=".8"/>
             </Trigger>
+
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="Silver"/>
+            </Trigger>
         </Style.Triggers>
     </Style>
 </ResourceDictionary>

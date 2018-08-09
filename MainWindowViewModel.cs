@@ -9,6 +9,8 @@ using SQLiteTool.Util;
 using System.Windows.Input;
 using SQLiteTool.Commands;
 using SQLiteTool.Views;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace SQLiteTool
 {
@@ -16,6 +18,8 @@ namespace SQLiteTool
     {
         GlobalData globalData;
         public ICommand ShowCreateDatabaseDialog { get; private set; }
+
+        public ICommand SelectDBItemCommand { get; private set; }
    
         public bool IsCreateDialogShow { get; set; }   
 
@@ -26,6 +30,7 @@ namespace SQLiteTool
             globalData = GlobalData.CreateInstance();
 
             ShowCreateDatabaseDialog = new DelegateCommand(ShowCreateDialog,()=> {return  !IsCreateDialogShow; });
+            SelectDBItemCommand = new DelegateCommand<RoutedEventArgs>(SelectDBFunc);
 
             DatabaseItemList = LoadDatabaseList();
             StatusInfo = Properties.Resources.Txt_Status_Ready;
@@ -55,7 +60,7 @@ namespace SQLiteTool
                 statusInfo = value;
                 RaiseChange("StatusInfo");
             }
-        }      
+        }     
 
         public void ShowCreateDialog()
         {
@@ -105,6 +110,22 @@ namespace SQLiteTool
         public void RefreshDatabaseList()
         {
             DatabaseItemList = LoadDatabaseList();
+        }
+
+        private void SelectDBFunc(RoutedEventArgs e)
+        {
+            var treeViewItem = VisualTreeUtil.VisualTreeUpwardSearch<TreeViewItem>(e.OriginalSource as DependencyObject) as TreeViewItem;
+
+            if (treeViewItem == null) return;
+
+
+            DatabaseItem item = treeViewItem.Header as DatabaseItem;
+            if(item != null)
+            {
+                StatusInfo = item.DisplayName;
+            }
+
+               
         }
     }
 }

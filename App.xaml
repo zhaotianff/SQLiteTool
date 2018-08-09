@@ -1,22 +1,17 @@
-﻿<Application x:Class="SQLiteTool.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:SQLiteTool"
-             StartupUri="MainWindow.xaml">
-    <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <!--区域化-->
-                <!--默认简体中文-->
-                <ResourceDictionary Source="Resources/Localization/zh-CN.xaml"/>
-               
-                <ResourceDictionary Source="Style/WindowStyle.xaml"/>
-                <ResourceDictionary Source="Style/ImageButton.xaml"/>
-                <ResourceDictionary Source="Style/RichTextBoxStyle.xaml"/>
-                <ResourceDictionary Source="Style/ButtonStyle.xaml"/>
-                <ResourceDictionary Source="Style/FontStyle.xaml"/>
-
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Application.Resources>
+﻿<Application x:Class="SQLiteTool.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:SQLiteTool" StartupUri="MainWindow.xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d1p1:Ignorable="d" xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <!--区域化-->
+        <!--默认简体中文-->
+            <ResourceDictionary Source="Resources/Localization/zh-CN.xaml"></ResourceDictionary>
+            <ResourceDictionary Source="Style/WindowStyle.xaml"></ResourceDictionary>
+            <ResourceDictionary Source="Style/ImageButton.xaml"></ResourceDictionary>
+            <ResourceDictionary Source="Style/RichTextBoxStyle.xaml"></ResourceDictionary>
+            <ResourceDictionary Source="Style/ButtonStyle.xaml"></ResourceDictionary>
+            <ResourceDictionary Source="Style/FontStyle.xaml"></ResourceDictionary>
+             <ResourceDictionary Source="Style/TreeViewStyle.xaml"></ResourceDictionary>
+       </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Application.Resources>
 </Application>

@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:SQLiteTool"
         xmlns:model="clr-namespace:SQLiteTool.Model"
         xmlns:c="clr-namespace:SQLiteTool.Commands"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+         xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
         mc:Ignorable="d"
         Title="SQLiteTool" Height="720" Width="1280" WindowStartupLocation="CenterScreen" Style="{StaticResource newStyle}">
     <Grid ShowGridLines="True">
@@ -56,7 +58,7 @@
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TreeView Grid.Column="0" ItemsSource="{Binding DatabaseItemList}">
+            <TreeView Grid.Column="0" ItemsSource="{Binding DatabaseItemList}" ItemContainerStyle="{StaticResource TreeViewItemStyle}">
                 <TreeView.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="{DynamicResource Func.Treeview.LocalDB.ContextMenu.Create}" Command="{Binding ShowCreateDatabaseDialog}"></MenuItem>
@@ -70,6 +72,11 @@
                         </StackPanel>
                     </HierarchicalDataTemplate>
                 </TreeView.ItemTemplate>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="PreviewMouseDown">
+                        <cmd:EventToCommand Command="{Binding SelectDBItemCommand}" PassEventArgsToCommand="True" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </TreeView>
             <GridSplitter Grid.Column="1"  Width="1"  HorizontalAlignment="Center" Background="LightSkyBlue" BorderBrush="Transparent" />
             <Grid Grid.Column="2" ShowGridLines="False">
