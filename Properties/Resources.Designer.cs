@@ -115,6 +115,15 @@ namespace SQLiteTool.Properties {
         }
         
         /// <summary>
+        ///   查找类似 受影响的行数[Num] 的本地化字符串。
+        /// </summary>
+        internal static string Txt_Query_Result {
+            get {
+                return ResourceManager.GetString("Txt_Query_Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 请先选择数据库 的本地化字符串。
         /// </summary>
         internal static string Txt_Status_ChooseDatabase {

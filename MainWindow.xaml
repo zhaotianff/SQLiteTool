@@ -62,8 +62,9 @@
             <TreeView Grid.Column="0" ItemsSource="{Binding DatabaseItemList}" ItemContainerStyle="{StaticResource TreeViewItemStyle}">
                 <TreeView.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="{DynamicResource Func.Treeview.LocalDB.ContextMenu.Create}" Command="{Binding ShowCreateDatabaseDialog}"></MenuItem>
-                        <MenuItem Header="{DynamicResource Func.Treeview.LocalDB.ContextMenu.Attatch}"></MenuItem>
+                        <MenuItem Header="{DynamicResource Func.TreeView.LocalDB.ContextMenu.Create}" Command="{Binding ShowCreateDatabaseDialog}"></MenuItem>
+                        <MenuItem Header="{DynamicResource Func.TreeView.LocalDB.ContextMenu.Attatch}" Command="{Binding ShowAttatchDatabaseDialog}"></MenuItem>
+                        <MenuItem Header="{DynamicResource Func.TreeView.LocalDB.ContextMenu.DeleteDB}"></MenuItem>
                     </ContextMenu>
                 </TreeView.ContextMenu>
                 <TreeView.ItemTemplate>
@@ -87,17 +88,29 @@
                     <RowDefinition Height="220"/>
                 </Grid.RowDefinitions>
                 <RichTextBox Grid.Row="0">
-                    <FlowDocument>
+                    <!--<FlowDocument>
                         <Paragraph>
                             <Run Text="{Binding SQLStr, Mode=TwoWay}"/>
                         </Paragraph>
-                    </FlowDocument>
+                    </FlowDocument>-->
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="PreviewKeyUp">
+                            <cmd:EventToCommand  Command="{Binding FetchSQLStrCommand}" PassEventArgsToCommand="True"></cmd:EventToCommand>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </RichTextBox>
                 <GridSplitter Grid.Row="1" Height="2" ResizeDirection="Rows" Background="LightSkyBlue" BorderBrush="Transparent" HorizontalAlignment="Stretch"/>
 
                 <Grid Grid.Row="2">
-                    <DataGrid  ItemsSource="{Binding QueryResultTable}">
-                    </DataGrid>
+                    <TabControl>
+                        <TabItem Header="{DynamicResource Query.Result}">
+                            <DataGrid  ItemsSource="{Binding QueryResultTable}">
+                            </DataGrid>
+                        </TabItem>
+                        <TabItem Header="{DynamicResource Query.Message}">
+                            <Label Content="{Binding QueryResultCount}"></Label>
+                        </TabItem>
+                    </TabControl>
                 </Grid>
             </Grid>
         </Grid>

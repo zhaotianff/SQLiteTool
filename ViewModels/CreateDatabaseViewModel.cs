@@ -96,7 +96,7 @@ namespace SQLiteTool.ViewModels
 
         public void CreateDatabase()
         {
-            if (System.IO.File.Exists(FilePath + "\\" + Name))
+            if (System.IO.File.Exists(FilePath + "\\" + Name + ".db"))
             {
                 MessageBox.Show(Properties.Resources.Txt_DBExist);
                 Name = "";

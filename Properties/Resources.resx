@@ -135,6 +135,9 @@
   <data name="Txt_OpenDB" xml:space="preserve">
     <value>打开数据库</value>
   </data>
+  <data name="Txt_Query_Result" xml:space="preserve">
+    <value>受影响的行数[Num]</value>
+  </data>
   <data name="Txt_Status_ChooseDatabase" xml:space="preserve">
     <value>请先选择数据库</value>
   </data>

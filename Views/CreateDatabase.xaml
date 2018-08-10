@@ -20,11 +20,11 @@
         <Grid Grid.Row="1" VerticalAlignment="Center">
             <Label Content="{DynamicResource Windows.CreateDatabase.Path}" Width="70" HorizontalContentAlignment="Center" HorizontalAlignment="Left" ></Label>
             <TextBox Width="380" HorizontalAlignment="Right" Margin="0,0,42,0" VerticalContentAlignment="Center" Text="{Binding FilePath,UpdateSourceTrigger=PropertyChanged}"></TextBox>
-            <Button Width="30" Content="{DynamicResource Windows.CreateDatabase.Browse}" VerticalContentAlignment="Top" HorizontalAlignment="Right" Margin="0,0,10,0" Command="{Binding BrowseDBPathCommand}"></Button>
+            <Button Width="30" Content="{DynamicResource Windows.Browse}" VerticalContentAlignment="Top" HorizontalAlignment="Right" Margin="0,0,10,0" Command="{Binding BrowseDBPathCommand}"></Button>
         </Grid>
         <Grid Grid.Row="2">
-            <Button HorizontalAlignment="Right" Content="{DynamicResource Windows.CreateDatabase.OK}" Margin="0,0,65,0" Width="50" Height="28" Command="{Binding CreateDatabaseCommand}"></Button>
-            <Button HorizontalAlignment="Right" Content="{DynamicResource Windows.CreateDatabase.Cancel}" Width="50" Margin="0,0,5,0" Height="28" Command="{Binding CloseDialogCommand}"/>
+            <Button HorizontalAlignment="Right" Content="{DynamicResource Windows.OK}" Margin="0,0,65,0" Width="50" Height="28" Command="{Binding CreateDatabaseCommand}"></Button>
+            <Button HorizontalAlignment="Right" Content="{DynamicResource Windows.Cancel}" Width="50" Margin="0,0,5,0" Height="28" Command="{Binding CloseDialogCommand}"/>
         </Grid>
     </Grid>
 </Window>

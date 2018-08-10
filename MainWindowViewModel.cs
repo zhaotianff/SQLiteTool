@@ -12,38 +12,29 @@ using SQLiteTool.Views;
 using System.Windows;
 using System.Windows.Controls;
 using System.Data;
+using System.Windows.Documents;
 
 namespace SQLiteTool
 {
     class MainWindowViewModel : NotifyPropertyBase
     {
         GlobalData globalData;
-        public ICommand ShowCreateDatabaseDialog { get; private set; }
-
-        public ICommand SelectDBItemCommand { get; private set; }
-
-        public ICommand OpenDatabaseCommand { get; private set; }
-
-        public ICommand ExecuteQueryCommand { get; private set; }
-   
-        public bool IsCreateDialogShow { get; set; }
-
-        public MainWindowViewModel()
-        {
-            IsCreateDialogShow = false;
-
-            globalData = GlobalData.CreateInstance();
-
-            ShowCreateDatabaseDialog = new DelegateCommand(ShowCreateDialog, () => { return !IsCreateDialogShow; });
-            SelectDBItemCommand = new DelegateCommand<RoutedEventArgs>(SelectDBFunc);
-            OpenDatabaseCommand = new DelegateCommand(OpenDatabase, () => {return (SelectedDBItem != null && SelectedDBItem.OpenState == false && SelectedDBItem.Children == null); });
-            ExecuteQueryCommand = new DelegateCommand(ExecuteQuery,()=> { return !string.IsNullOrEmpty(SQLStr); });
-
-            DatabaseItemList = LoadDatabaseList();
-            StatusInfo = Properties.Resources.Txt_Status_Ready;
-        }
 
         private List<DatabaseItem> databaseItemList;
+        private string statusInfo;
+        private string queryResultCount;
+        private DatabaseItem selectedDBItem;
+        private string sQLStr;
+        private DataView queryResultTable;
+
+        public ICommand ShowCreateDatabaseDialog { get; private set; }
+        public ICommand ShowAttatchDatabaseDialog { get; private set; }
+        public ICommand SelectDBItemCommand { get; private set; }
+        public ICommand OpenDatabaseCommand { get; private set; }
+        public ICommand ExecuteQueryCommand { get; private set; }
+        public ICommand FetchSQLStrCommand { get; private set; }  
+        public bool IsCreateDialogShow { get; set; }
+
         public List<DatabaseItem> DatabaseItemList
         {
             get { return databaseItemList; }
@@ -53,8 +44,7 @@ namespace SQLiteTool
                 RaiseChange("DatabaseItemList");
             }
         }
-
-        private string statusInfo;
+               
         public string StatusInfo
         {
             get
@@ -68,15 +58,7 @@ namespace SQLiteTool
                 RaiseChange("StatusInfo");
             }
         }     
-
-        public void ShowCreateDialog()
-        {
-            CreateDatabase dialog = new Views.CreateDatabase();
-            dialog.ShowDialog();
-        }
-
-        private DatabaseItem selectedDBItem;
-
+       
         public DatabaseItem SelectedDBItem
         {
             get
@@ -89,9 +71,7 @@ namespace SQLiteTool
                 RaiseChange("SelectedDBItem");
             }
         }
-
-        private DataView queryResultTable;
-
+       
         public DataView QueryResultTable
         {
             get
@@ -120,8 +100,48 @@ namespace SQLiteTool
             }
         }
 
-        private string sQLStr;
+        public string QueryResultCount
+        {
+            get
+            {
+                return Properties.Resources.Txt_Query_Result.Replace("[Num]", queryResultCount);
+            }
 
+            set
+            {
+                queryResultCount = value;
+                RaiseChange("QueryResultCount");
+            }
+        }
+
+        public MainWindowViewModel()
+        {
+            IsCreateDialogShow = false;
+
+            globalData = GlobalData.CreateInstance();
+
+            ShowCreateDatabaseDialog = new DelegateCommand(ShowCreateDialog);
+            ShowAttatchDatabaseDialog = new DelegateCommand(ShowAttatchDialog);
+            SelectDBItemCommand = new DelegateCommand<RoutedEventArgs>(SelectDBFunc);
+            OpenDatabaseCommand = new DelegateCommand(OpenDatabase, () => { return (SelectedDBItem != null && SelectedDBItem.OpenState == false && SelectedDBItem.Children == null); });
+            ExecuteQueryCommand = new DelegateCommand(ExecuteQuery, () => { return !string.IsNullOrEmpty(SQLStr); });
+            FetchSQLStrCommand = new DelegateCommand<RoutedEventArgs>(FetchSQLStr);
+
+            DatabaseItemList = LoadDatabaseList();
+            StatusInfo = Properties.Resources.Txt_Status_Ready;
+        }
+
+        public void ShowCreateDialog()
+        {
+            CreateDatabase dialog = new Views.CreateDatabase();
+            dialog.ShowDialog();
+        }
+
+        public void ShowAttatchDialog()
+        {
+            AttatchDatabase dialog = new AttatchDatabase();
+            dialog.ShowDialog();
+        }
 
         public List<DatabaseItem> LoadDatabaseList()
         {
@@ -176,22 +196,31 @@ namespace SQLiteTool
             DatabaseItem item = treeViewItem.Header as DatabaseItem;
             if(item != null)
             {            
-                SelectedDBItem = item;               
+                SelectedDBItem = item;
             }               
         }
 
         private void OpenDatabase()
-        {            
-            var openedItem = DatabaseItemList.Where(x => x.OpenState == true).FirstOrDefault();
+        {
+            //TODO
+            List<DatabaseItem> childrenItem = DatabaseItemList.First().Children;
+            var openedItem = childrenItem.Where(x => x.OpenState == true).FirstOrDefault();
 
             if (openedItem != null && openedItem.FilePath != SelectedDBItem.FilePath)
+            {
                 globalData.dbHelper.CloseLocalDB(openedItem.FilePath);
+                openedItem.OpenState = false;
+                var index = childrenItem.IndexOf(openedItem);
+                childrenItem[index] = openedItem;
+                DatabaseItemList[0].Children = childrenItem;
+            }
 
             var result = globalData.dbHelper.OpenLocalDB(SelectedDBItem.FilePath);
 
             if(result == true)
             {
                 StatusInfo =Properties.Resources.Txt_OpenDB + "[" + SelectedDBItem.DisplayName + "]" + Properties.Resources.Txt_Status_Success + "(" + SelectedDBItem.FilePath + ")";
+                SelectedDBItem.OpenState = true;
             }
             else
             {
@@ -202,6 +231,21 @@ namespace SQLiteTool
         public void ExecuteQuery()
         {
             QueryResultTable = globalData.dbHelper.ExecuteQuery(SQLStr).DefaultView;
+
+            QueryResultCount = QueryResultTable.Count.ToString();
+        }
+
+        public void FetchSQLStr(RoutedEventArgs args)
+        {
+            RichTextBox rTbox = args.Source as RichTextBox;
+
+            if(rTbox != null)
+            {
+                FlowDocument flowDocument = rTbox.Document;
+                TextRange a = new TextRange(flowDocument.ContentStart, flowDocument.ContentEnd);
+
+                SQLStr = a.Text;
+            }
         }
     }
 }

@@ -43,20 +43,40 @@
     
     <!--功能-->
     <s:String x:Key="Func.TreeView.LocalDB">本地数据库</s:String>
-    <s:String x:Key="Func.Treeview.LocalDB.ContextMenu.Create">创建数据库</s:String>
-    <s:String x:Key="Func.Treeview.LocalDB.ContextMenu.Attatch">附加数据库</s:String>
-    <s:String x:Key="Func.TreeView.NetworkDB">网络数据库</s:String>  
+    <s:String x:Key="Func.TreeView.LocalDB.ContextMenu.Create">创建数据库</s:String>
+    <s:String x:Key="Func.TreeView.LocalDB.ContextMenu.Attatch">附加数据库</s:String>
+    <s:String x:Key="Func.TreeView.LocalDB.ContextMenu.DeleteDB">删除数据库</s:String>
+    <s:String x:Key="Func.TreeView.NetworkDB">网络数据库</s:String>
+   
     
     <!--窗口-->
+    
+    <!--公用-->
+    <s:String x:Key="Windows.OK">确定</s:String>
+    <s:String x:Key="Windows.Cancel">取消</s:String>
+    <s:String x:Key="Windows.Browse">...</s:String>
+
+    <!--新建数据库-->
     <s:String x:Key="Windows.CreateDatabase.Title">新建数据库</s:String>
     <s:String x:Key="Windows.CreateDatabase.Name">名称</s:String>
     <s:String x:Key="Windows.CreateDatabase.Path">路径</s:String>
-    <s:String x:Key="Windows.CreateDatabase.Browse">...</s:String>
-    <s:String x:Key="Windows.CreateDatabase.OK">确定</s:String>
-    <s:String x:Key="Windows.CreateDatabase.Cancel">取消</s:String>
-    
+
+    <!--附加数据库-->
+    <s:String x:Key="Windows.AttatchDatabase.Title">附加数据库</s:String>
+    <s:String x:Key="Windows.AttatchDatabase.Path">路径</s:String>
+
     <!--工具栏-->
     <s:String x:Key="ToolBar.OpenDatabase">打开数据库</s:String>
     <s:String x:Key="ToolBar.NewQuery">新建查询</s:String>
     <s:String x:Key="ToolBar.Execute">执行查询</s:String>
+    
+    <!--编辑框-->
+    <s:String x:Key="Editor.Copy">复制</s:String>
+    <s:String x:Key="Editor.Paste">粘贴</s:String>
+    <s:String x:Key="Editor.Cut">剪切</s:String>
+    
+    <!--查询-->
+    <s:String x:Key="Query.Message">消息</s:String>
+    <s:String x:Key="Query.Result">结果</s:String>
+
 </ResourceDictionary>
