@@ -33,6 +33,8 @@ namespace SQLiteTool
         public ICommand OpenDatabaseCommand { get; private set; }
         public ICommand ExecuteQueryCommand { get; private set; }
         public ICommand FetchSQLStrCommand { get; private set; }  
+
+        public ICommand DeleteDBCommand { get; private set; }
         public bool IsCreateDialogShow { get; set; }
 
         public List<DatabaseItem> DatabaseItemList
@@ -126,6 +128,7 @@ namespace SQLiteTool
             OpenDatabaseCommand = new DelegateCommand(OpenDatabase, () => { return (SelectedDBItem != null && SelectedDBItem.OpenState == false && SelectedDBItem.Children == null); });
             ExecuteQueryCommand = new DelegateCommand(ExecuteQuery, () => { return !string.IsNullOrEmpty(SQLStr); });
             FetchSQLStrCommand = new DelegateCommand<RoutedEventArgs>(FetchSQLStr);
+            DeleteDBCommand = new DelegateCommand(DeleteDatabase,()=> { return SelectedDBItem != null && SelectedDBItem.Children == null; });
 
             DatabaseItemList = LoadDatabaseList();
             StatusInfo = Properties.Resources.Txt_Status_Ready;
@@ -246,6 +249,11 @@ namespace SQLiteTool
 
                 SQLStr = a.Text;
             }
+        }
+
+        public void DeleteDatabase()
+        {
+
         }
     }
 }

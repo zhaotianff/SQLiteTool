@@ -129,6 +129,15 @@
   <data name="Txt_DBExist" xml:space="preserve">
     <value>数据库文件已经存在</value>
   </data>
+  <data name="Txt_Dialog_Attatch" xml:space="preserve">
+    <value>附加数据库</value>
+  </data>
+  <data name="Txt_Dialog_Browse_All" xml:space="preserve">
+    <value>全部文件</value>
+  </data>
+  <data name="Txt_Dialog_Browse_Filter" xml:space="preserve">
+    <value>SQLite数据库文件</value>
+  </data>
   <data name="Txt_LocalDB" xml:space="preserve">
     <value>本地数据库</value>
   </data>

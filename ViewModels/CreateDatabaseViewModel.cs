@@ -14,24 +14,24 @@ namespace SQLiteTool.ViewModels
 {
     public class CreateDatabaseViewModel : NotifyPropertyBase
     {
-        private string name;
+        private string alias;
         private string filePath;
         private bool isNameFocused;
         private bool? createDialogResult;
 
         GlobalData globalData = GlobalData.CreateInstance();
 
-        public string Name
+        public string Alias
         {
             get
             {
-                return name;
+                return alias;
             }
 
             set
             {
-                name = value;
-                RaiseChange("Name");
+                alias = value;
+                RaiseChange("Alias");
             }
         }
 
@@ -86,7 +86,7 @@ namespace SQLiteTool.ViewModels
 
         public CreateDatabaseViewModel()
         {           
-            CreateDatabaseCommand = new DelegateCommand(CreateDatabase,()=> { return (!string.IsNullOrEmpty(FilePath) && !string.IsNullOrEmpty(Name)); });
+            CreateDatabaseCommand = new DelegateCommand(CreateDatabase,()=> { return (!string.IsNullOrEmpty(FilePath) && !string.IsNullOrEmpty(Alias)); });
             BrowseDBPathCommand = new DelegateCommand(BrowseDBPath);
             CloseDialogCommand = new DelegateCommand(CloseDialog);
 
@@ -96,15 +96,15 @@ namespace SQLiteTool.ViewModels
 
         public void CreateDatabase()
         {
-            if (System.IO.File.Exists(FilePath + "\\" + Name + ".db"))
+            if (System.IO.File.Exists(FilePath + "\\" + Alias + ".db"))
             {
                 MessageBox.Show(Properties.Resources.Txt_DBExist);
-                Name = "";
+                Alias = "";
                 IsNameFocused = false;
                 IsNameFocused = true;
                 return;
             }
-            bool result = GlobalData.CreateInstance().dbHelper.CreateDBFile(Name, FilePath);
+            bool result = GlobalData.CreateInstance().dbHelper.CreateDBFile(Alias, FilePath);
             if (result == false)
             {
                 MessageBox.Show(Properties.Resources.Txt_CreateDBFault);
@@ -115,7 +115,7 @@ namespace SQLiteTool.ViewModels
                 MessageBox.Show(Properties.Resources.Txt_CreateDBSuccess);
             }
 
-            UpdateDBConfig();
+            UpdateDBConfig(FilePath, Alias, Alias);
             globalData.mainWindowViewModel.RefreshDatabaseList();
             CreateDialogResult = true;           
         }
@@ -135,13 +135,13 @@ namespace SQLiteTool.ViewModels
             CreateDialogResult = false;
         }
 
-        public void UpdateDBConfig()
+        public void UpdateDBConfig(string filePath,string name,string description)
         {
             try
             {
                 globalData.xmlHelper.OpenXml(globalData.ConfigFilePath);
                 globalData.xmlHelper.GetDocument().Root.Element("LocalDBList").Add(new XElement(
-                    "Item",new XElement("FilePath", filePath + "\\" + name + ".db"),new XElement("DisplayName", name),new XElement("Description", name)
+                    "Item",new XElement("FilePath", filePath + "\\" + name + ".db"),new XElement("DisplayName", name),new XElement("Description", description)
                     ));
                 globalData.xmlHelper.Save();
             }

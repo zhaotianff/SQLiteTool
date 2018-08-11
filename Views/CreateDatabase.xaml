@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" VerticalAlignment="Center">
             <Label Content="{DynamicResource Windows.CreateDatabase.Name}" Width="70" HorizontalAlignment="Left" HorizontalContentAlignment="Center"></Label>
-            <TextBox Width="410" HorizontalAlignment="Right" Margin="0,0,10,0" VerticalContentAlignment="Center" Text="{Binding Name,UpdateSourceTrigger=PropertyChanged}" util:FocusExtension.IsFocused="{Binding IsNameFocused}"></TextBox>
+            <TextBox Width="410" HorizontalAlignment="Right" Margin="0,0,10,0" VerticalContentAlignment="Center" Text="{Binding Alias,UpdateSourceTrigger=PropertyChanged}" util:FocusExtension.IsFocused="{Binding IsNameFocused}"></TextBox>
         </Grid>
         <Grid Grid.Row="1" VerticalAlignment="Center">
             <Label Content="{DynamicResource Windows.CreateDatabase.Path}" Width="70" HorizontalContentAlignment="Center" HorizontalAlignment="Left" ></Label>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SQLiteTool.Util;
+using SQLiteTool.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,13 @@ namespace SQLiteTool.Views
     /// </summary>
     public partial class AttatchDatabase : Window
     {
+        AttatchDatabaseViewModel context;
         public AttatchDatabase()
         {
             InitializeComponent();
+            context = new AttatchDatabaseViewModel();
+            GlobalData.CreateInstance().attatchDatabaseViewModel = context;
+            this.DataContext = context;
         }
     }
 }

@@ -127,6 +127,7 @@
     <Compile Include="Util\RichTextBoxHelper.cs" />
     <Compile Include="Util\VisualTreeUtil.cs" />
     <Compile Include="Util\XmlHelper.cs" />
+    <Compile Include="ViewModels\AttatchDatabaseViewModel.cs" />
     <Compile Include="ViewModels\CreateDatabaseViewModel.cs" />
     <Compile Include="Views\AttatchDatabase.xaml.cs">
       <DependentUpon>AttatchDatabase.xaml</DependentUpon>

@@ -49,4 +49,39 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+
+    <Style TargetType="{x:Type Button}" x:Key="ButtonStyle">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border BorderThickness="2" BorderBrush="LightBlue" Background="White" Name="border">
+                        <!--<ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"></ContentPresenter>-->
+                        <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{TemplateBinding Content}" Name="label"></Label>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" Duration="0:0:0.3" To="LightBlue"/>
+                                        <!--<ColorAnimation Storyboard.TargetName="label" Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0.3" To="Silver"/>-->
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="BorderBrush.Color" Duration="0" To="LightBlue"/>
+                                        <ColorAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color" Duration="0" To="White"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

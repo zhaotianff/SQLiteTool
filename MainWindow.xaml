@@ -64,7 +64,7 @@
                     <ContextMenu>
                         <MenuItem Header="{DynamicResource Func.TreeView.LocalDB.ContextMenu.Create}" Command="{Binding ShowCreateDatabaseDialog}"></MenuItem>
                         <MenuItem Header="{DynamicResource Func.TreeView.LocalDB.ContextMenu.Attatch}" Command="{Binding ShowAttatchDatabaseDialog}"></MenuItem>
-                        <MenuItem Header="{DynamicResource Func.TreeView.LocalDB.ContextMenu.DeleteDB}"></MenuItem>
+                        <MenuItem Header="{DynamicResource Func.TreeView.LocalDB.ContextMenu.DeleteDB}" Command="{Binding DeleteDBCommand}"></MenuItem>
                     </ContextMenu>
                 </TreeView.ContextMenu>
                 <TreeView.ItemTemplate>

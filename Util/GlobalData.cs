@@ -23,6 +23,7 @@ namespace SQLiteTool.Util
 
         public CreateDatabaseViewModel createDatabaseViewModel;
         public MainWindowViewModel mainWindowViewModel;
+        public AttatchDatabaseViewModel attatchDatabaseViewModel;
 
         public string ConfigFilePath = Environment.CurrentDirectory + "\\config\\DBList.xml";
 

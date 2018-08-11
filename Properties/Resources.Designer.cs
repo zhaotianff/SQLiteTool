@@ -97,6 +97,33 @@ namespace SQLiteTool.Properties {
         }
         
         /// <summary>
+        ///   查找类似 附加数据库 的本地化字符串。
+        /// </summary>
+        internal static string Txt_Dialog_Attatch {
+            get {
+                return ResourceManager.GetString("Txt_Dialog_Attatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 全部文件 的本地化字符串。
+        /// </summary>
+        internal static string Txt_Dialog_Browse_All {
+            get {
+                return ResourceManager.GetString("Txt_Dialog_Browse_All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 SQLite数据库文件 的本地化字符串。
+        /// </summary>
+        internal static string Txt_Dialog_Browse_Filter {
+            get {
+                return ResourceManager.GetString("Txt_Dialog_Browse_Filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 本地数据库 的本地化字符串。
         /// </summary>
         internal static string Txt_LocalDB {

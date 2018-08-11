@@ -4,22 +4,29 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SQLiteTool.Views"
+        xmlns:util="clr-namespace:SQLiteTool.Util"
         mc:Ignorable="d"
-        Title="{DynamicResource Windows.AttatchDatabase.Title}" Height="120" Width="500" SnapsToDevicePixels="True" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="{DynamicResource Windows.AttatchDatabase.Title}" Height="160" Width="500" SnapsToDevicePixels="True" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        util:DialogCloser.DialogResult="{Binding AttatchDialogResult}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" VerticalAlignment="Center">
             <Label Content="{DynamicResource Windows.AttatchDatabase.Path}" Width="70" HorizontalContentAlignment="Center" HorizontalAlignment="Left" ></Label>
             <TextBox Width="380" HorizontalAlignment="Right" Margin="0,0,42,0" VerticalContentAlignment="Center" Text="{Binding FilePath,UpdateSourceTrigger=PropertyChanged}"></TextBox>
-            <Button Width="30" Content="{DynamicResource Windows.Browse}" VerticalContentAlignment="Top" HorizontalAlignment="Right" Margin="0,0,10,0" Command="{Binding BrowseDBPathCommand}"></Button>
+            <Button Width="30" Content="{DynamicResource Windows.Browse}"  HorizontalAlignment="Right" Margin="0,0,10,0" Command="{Binding BrowseDBPathCommand}" Style="{StaticResource ButtonStyle}"></Button>
+        </Grid>
+        <Grid Grid.Row="1" VerticalAlignment="Center">
+            <Label Content="{DynamicResource Windows.CreateDatabase.Name}" Width="70" HorizontalContentAlignment="Center" HorizontalAlignment="Left" ></Label>
+            <TextBox Width="380" HorizontalAlignment="Right" Margin="0,0,42,0" VerticalContentAlignment="Center" Text="{Binding Alias,UpdateSourceTrigger=PropertyChanged}"></TextBox>
         </Grid>
 
-        <Grid Grid.Row="1">
-            <Button HorizontalAlignment="Right" Content="{DynamicResource Windows.OK}" Margin="0,0,65,0" Width="50" Height="28"></Button>
-            <Button HorizontalAlignment="Right" Content="{DynamicResource Windows.Cancel}" Width="50" Margin="0,0,5,0" Height="28"/>
+        <Grid Grid.Row="2">
+            <Button HorizontalAlignment="Right" Content="{DynamicResource Windows.OK}" Margin="0,0,65,0" Width="50" Height="28" Style="{StaticResource ButtonStyle}" Command="{Binding AttatchDatabaseCommand}"></Button>
+            <Button HorizontalAlignment="Right" Content="{DynamicResource Windows.Cancel}" Width="50" Margin="0,0,5,0" Height="28" Style="{StaticResource ButtonStyle}" Command="{Binding CloseDialogCommand}"/>
         </Grid>
     </Grid>
 </Window>
