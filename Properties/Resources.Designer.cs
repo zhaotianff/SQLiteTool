@@ -97,6 +97,15 @@ namespace SQLiteTool.Properties {
         }
         
         /// <summary>
+        ///   查找类似 删除数据库 的本地化字符串。
+        /// </summary>
+        internal static string Txt_DeleteDB {
+            get {
+                return ResourceManager.GetString("Txt_DeleteDB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 附加数据库 的本地化字符串。
         /// </summary>
         internal static string Txt_Dialog_Attatch {

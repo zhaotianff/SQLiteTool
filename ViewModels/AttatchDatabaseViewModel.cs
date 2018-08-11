@@ -87,11 +87,11 @@ namespace SQLiteTool.ViewModels
 
                 globalData.createDatabaseViewModel.UpdateDBConfig(FilePath,Alias,Alias);
                 globalData.mainWindowViewModel.RefreshDatabaseList();
-                System.Windows.MessageBox.Show(Properties.Resources.Txt_Dialog_Attatch + Properties.Resources.Txt_Status_Success);
+                globalData.mainWindowViewModel.ShowStatusInfo(Properties.Resources.Txt_Dialog_Attatch + Properties.Resources.Txt_Status_Success);
             }
             catch (Exception ex)
             {
-                System.Windows.MessageBox.Show(Properties.Resources.Txt_Dialog_Attatch + Properties.Resources.Txt_Status_Failed);
+                globalData.mainWindowViewModel.ShowStatusInfo(Properties.Resources.Txt_Dialog_Attatch + Properties.Resources.Txt_Status_Failed);
                 globalData.log.Error(ex.Message);
             }
             AttatchDialogResult = true;

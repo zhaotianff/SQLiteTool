@@ -13,6 +13,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Data;
 using System.Windows.Documents;
+using System.Collections.ObjectModel;
 
 namespace SQLiteTool
 {
@@ -20,7 +21,7 @@ namespace SQLiteTool
     {
         GlobalData globalData;
 
-        private List<DatabaseItem> databaseItemList;
+        private ObservableCollection<DatabaseItem> databaseItemList;
         private string statusInfo;
         private string queryResultCount;
         private DatabaseItem selectedDBItem;
@@ -34,10 +35,12 @@ namespace SQLiteTool
         public ICommand ExecuteQueryCommand { get; private set; }
         public ICommand FetchSQLStrCommand { get; private set; }  
 
+        public ICommand ExitProgramCommand { get; private set; }
+
         public ICommand DeleteDBCommand { get; private set; }
         public bool IsCreateDialogShow { get; set; }
 
-        public List<DatabaseItem> DatabaseItemList
+        public ObservableCollection<DatabaseItem> DatabaseItemList
         {
             get { return databaseItemList; }
             set
@@ -129,9 +132,10 @@ namespace SQLiteTool
             ExecuteQueryCommand = new DelegateCommand(ExecuteQuery, () => { return !string.IsNullOrEmpty(SQLStr); });
             FetchSQLStrCommand = new DelegateCommand<RoutedEventArgs>(FetchSQLStr);
             DeleteDBCommand = new DelegateCommand(DeleteDatabase,()=> { return SelectedDBItem != null && SelectedDBItem.Children == null; });
+            ExitProgramCommand = new DelegateCommand(ExitProgram);
 
-            DatabaseItemList = LoadDatabaseList();
-            StatusInfo = Properties.Resources.Txt_Status_Ready;
+            RefreshDatabaseList();
+            ShowStatusInfo(Properties.Resources.Txt_Status_Ready);
         }
 
         public void ShowCreateDialog()
@@ -146,9 +150,9 @@ namespace SQLiteTool
             dialog.ShowDialog();
         }
 
-        public List<DatabaseItem> LoadDatabaseList()
+        public ObservableCollection<DatabaseItem> LoadDatabaseList()
         {
-            List<DatabaseItem> list = new List<DatabaseItem>();
+            ObservableCollection<DatabaseItem> list = new ObservableCollection<DatabaseItem>();
             List<DatabaseItem> childList = new List<DatabaseItem>();
 
             try
@@ -219,16 +223,18 @@ namespace SQLiteTool
             }
 
             var result = globalData.dbHelper.OpenLocalDB(SelectedDBItem.FilePath);
+            string statusInfoStr = "";
 
             if(result == true)
             {
-                StatusInfo =Properties.Resources.Txt_OpenDB + "[" + SelectedDBItem.DisplayName + "]" + Properties.Resources.Txt_Status_Success + "(" + SelectedDBItem.FilePath + ")";
+                statusInfoStr =Properties.Resources.Txt_OpenDB + "[" + SelectedDBItem.DisplayName + "]" + Properties.Resources.Txt_Status_Success + "(" + SelectedDBItem.FilePath + ")";
                 SelectedDBItem.OpenState = true;
             }
             else
             {
-                StatusInfo = SelectedDBItem.DisplayName + Properties.Resources.Txt_OpenDB;
+                statusInfoStr = SelectedDBItem.DisplayName + Properties.Resources.Txt_OpenDB;
             }
+            ShowStatusInfo(statusInfoStr);
         }
 
         public void ExecuteQuery()
@@ -253,7 +259,45 @@ namespace SQLiteTool
 
         public void DeleteDatabase()
         {
+            if(SelectedDBItem.OpenState == true)
+            {
+                globalData.dbHelper.CloseLocalDB(SelectedDBItem.FilePath);
+            }
 
+            string xmlPath = "DatabaseList/LocalDBList/Item";
+            globalData.xmlHelper.OpenXml(globalData.ConfigFilePath);
+            var delNode = globalData.xmlHelper.GetElementByNodeName(xmlPath);
+
+            for (int i = 0; i < delNode.Count(); i++)
+            {
+                if(delNode.ElementAt(i).Element("FilePath").Value == SelectedDBItem.FilePath)
+                {
+                    globalData.xmlHelper.GetDocument().Root.Element("LocalDBList").Elements("Item").ElementAt(i).Remove();
+                    globalData.xmlHelper.Save();
+                    break;
+                }
+            }
+
+            if(System.IO.File.Exists(SelectedDBItem.FilePath))
+            {
+                System.IO.File.Delete(SelectedDBItem.FilePath);
+            }
+
+            RefreshDatabaseList();
+
+            string statusInfoStr = Properties.Resources.Txt_DeleteDB + "[" + SelectedDBItem.DisplayName + "]" + Properties.Resources.Txt_Status_Success;
+            ShowStatusInfo(statusInfoStr);
         }
+
+        public void ShowStatusInfo(string str)
+        {
+            StatusInfo = str;
+        }
+
+        public void ExitProgram()
+        {
+            Application.Current.Shutdown();
+        }
+
     }
 }

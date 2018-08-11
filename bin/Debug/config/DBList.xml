@@ -1,52 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <DatabaseList>
-  <LocalDBList>
-    <Item>
-      <FilePath>D:\Test.db</FilePath>
-      <DisplayName>MM</DisplayName>
-      <Description>HelloWorld</Description>
-    </Item>
-    <Item>
-      <FilePath>C:\Users\ZhaoJia\Desktop</FilePath>
-      <DisplayName>HelloWorld.db</DisplayName>
-      <Description>HelloWorld.db</Description>
-    </Item>
-    <Item>
-      <FilePath>C:\Users\ZhaoJia\Desktop</FilePath>
-      <DisplayName>abc</DisplayName>
-      <Description>abc</Description>
-    </Item>
-    <Item>
-      <FilePath>C:\Users\ZhaoJia\Desktop</FilePath>
-      <DisplayName>daily</DisplayName>
-      <Description>daily</Description>
-    </Item>
-    <Item>
-      <FilePath>C:\Users\ZhaoJia\Desktop</FilePath>
-      <DisplayName>abcdd</DisplayName>
-      <Description>abcdd</Description>
-    </Item>
-    <Item>
-      <FilePath>D:\mm.db</FilePath>
-      <DisplayName>mm</DisplayName>
-      <Description>mm</Description>
-    </Item>
-    <Item>
-      <FilePath>C:\Users\ZhaoJia\Desktop\d.db</FilePath>
-      <DisplayName>d</DisplayName>
-      <Description>d</Description>
-    </Item>
-    <Item>
-      <FilePath>D:\\mm.db</FilePath>
-      <DisplayName>mm</DisplayName>
-      <Description>mm</Description>
-    </Item>
-    <Item>
-      <FilePath>D:\\mm.db</FilePath>
-      <DisplayName>mm</DisplayName>
-      <Description>mm</Description>
-    </Item>
-  </LocalDBList>
+  <LocalDBList />
   <NetworkDBList>
     <Item>
       <FilePath></FilePath>

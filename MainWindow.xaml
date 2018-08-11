@@ -22,11 +22,11 @@
         <!--菜单-->
         <Menu>
             <MenuItem Header="{DynamicResource Menu.File}">
-                <MenuItem Header="{DynamicResource Menu.File.Create}"/>
-                <MenuItem Header="{DynamicResource Menu.File.Attatch}"/>
+                <MenuItem Header="{DynamicResource Menu.File.Create}" Command="{Binding ShowCreateDatabaseDialog}"/>
+                <MenuItem Header="{DynamicResource Menu.File.Attatch}" Command="{Binding ShowAttatchDatabaseDialog}"/>
                 <MenuItem Header="{DynamicResource Menu.File.Save}"/>
                 <MenuItem Header="{DynamicResource Menu.File.SaveAll}"/>
-                <MenuItem Header="{DynamicResource Menu.File.Exit}"/>
+                <MenuItem Header="{DynamicResource Menu.File.Exit}" Command="{Binding ExitProgramCommand}"/>
             </MenuItem>
             <MenuItem Header="{DynamicResource Menu.Edit}">
                 <MenuItem Header="{DynamicResource Menu.Edit.Copy}"/>

@@ -107,12 +107,12 @@ namespace SQLiteTool.ViewModels
             bool result = GlobalData.CreateInstance().dbHelper.CreateDBFile(Alias, FilePath);
             if (result == false)
             {
-                MessageBox.Show(Properties.Resources.Txt_CreateDBFault);
+                globalData.mainWindowViewModel.ShowStatusInfo(Properties.Resources.Txt_CreateDBFault);
             }
             else
             {
 
-                MessageBox.Show(Properties.Resources.Txt_CreateDBSuccess);
+                globalData.mainWindowViewModel.ShowStatusInfo(Properties.Resources.Txt_CreateDBSuccess);
             }
 
             UpdateDBConfig(FilePath, Alias, Alias);

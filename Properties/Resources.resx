@@ -129,6 +129,9 @@
   <data name="Txt_DBExist" xml:space="preserve">
     <value>数据库文件已经存在</value>
   </data>
+  <data name="Txt_DeleteDB" xml:space="preserve">
+    <value>删除数据库</value>
+  </data>
   <data name="Txt_Dialog_Attatch" xml:space="preserve">
     <value>附加数据库</value>
   </data>
