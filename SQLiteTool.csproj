@@ -118,6 +118,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.en.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\KeywordsResource.cs" />
     <Compile Include="Util\DBHelper.cs" />
     <Compile Include="Util\DialogCloser.cs" />
     <Compile Include="Util\FocusExtension.cs" />
